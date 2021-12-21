@@ -91,7 +91,7 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.png", categories, false, null)
+        val jsonResponse = client.processDocument("receipt.jpeg", categories, false, null)
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))
     }
@@ -112,7 +112,7 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.png", categories, false, parameters)
+        val jsonResponse = client.processDocument("receipt.jpeg", categories, false, parameters)
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))
     }
@@ -130,7 +130,7 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.png", null, false, null)
+        val jsonResponse = client.processDocument("receipt.jpeg", null, false, null)
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))
     }
@@ -293,7 +293,7 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponseFuture = client.processDocumentAsync("receipt.png", categories, false, null)
+        val jsonResponseFuture = client.processDocumentAsync("receipt.jpeg", categories, false, null)
         val jsonResponse = jsonResponseFuture.get()
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))

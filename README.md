@@ -3,7 +3,7 @@ https://veryfi.github.io/veryfi-kotlin/
 ![Veryfi Logo](https://cdn.veryfi.com/logos/veryfi-logo-wide-github.png)
 
 [![Java - version](https://img.shields.io/badge/OpenJDK-11-red)](https://openjdk.java.net/projects/jdk/11/)
-[![Coverage](.github/badges/jacoco.svg)](https://github.com/veryfi/veryfi-kotlin/actions/workflows/maven.yml)
+![Coverage](.github/badges/jacoco.svg)
 
 **veryfi** is a Kotlin module for communicating with the [Veryfi OCR API](https://veryfi.com/api/)
 

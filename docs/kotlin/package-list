@@ -13,14 +13,13 @@ $dokka.location:com.veryfi.kotlin/Client/processDocument/#kotlin.String#kotlin.c
 $dokka.location:com.veryfi.kotlin/Client/processDocumentAsync/#kotlin.String#kotlin.collections.List[kotlin.String?]?#kotlin.Boolean#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/process-document-async.html
 $dokka.location:com.veryfi.kotlin/Client/processDocumentUrl/#kotlin.String#kotlin.collections.List[kotlin.String?]?#kotlin.collections.List[kotlin.String?]?#kotlin.Boolean#kotlin.Int#kotlin.Boolean#kotlin.String?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/process-document-url.html
 $dokka.location:com.veryfi.kotlin/Client/processDocumentUrlAsync/#kotlin.String#kotlin.collections.List[kotlin.String?]?#kotlin.collections.List[kotlin.String?]?#kotlin.Boolean#kotlin.Int#kotlin.Boolean#kotlin.String?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/process-document-url-async.html
-$dokka.location:com.veryfi.kotlin/Client/setAPIVersion/#kotlin.Int/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/set-a-p-i-version.html
 $dokka.location:com.veryfi.kotlin/Client/setBaseUrl/#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/set-base-url.html
 $dokka.location:com.veryfi.kotlin/Client/setHttpClient/#java.net.http.HttpClient/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/set-http-client.html
 $dokka.location:com.veryfi.kotlin/Client/setTimeOut/#kotlin.Int/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/set-time-out.html
 $dokka.location:com.veryfi.kotlin/Client/updateDocument/#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/update-document.html
 $dokka.location:com.veryfi.kotlin/Client/updateDocumentAsync/#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client/update-document-async.html
 $dokka.location:com.veryfi.kotlin/ClientImpl///PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/index.html
-$dokka.location:com.veryfi.kotlin/ClientImpl/ClientImpl/#kotlin.String#kotlin.String#kotlin.String#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/-client-impl.html
+$dokka.location:com.veryfi.kotlin/ClientImpl/ClientImpl/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.Int/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/-client-impl.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/deleteDocument/#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/delete-document.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/deleteDocumentAsync/#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/delete-document-async.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/getDocument/#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/get-document.html
@@ -31,7 +30,6 @@ $dokka.location:com.veryfi.kotlin/ClientImpl/processDocument/#kotlin.String#kotl
 $dokka.location:com.veryfi.kotlin/ClientImpl/processDocumentAsync/#kotlin.String#kotlin.collections.List[kotlin.String?]?#kotlin.Boolean#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/process-document-async.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/processDocumentUrl/#kotlin.String#kotlin.collections.List[kotlin.String?]?#kotlin.collections.List[kotlin.String?]?#kotlin.Boolean#kotlin.Int#kotlin.Boolean#kotlin.String?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/process-document-url.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/processDocumentUrlAsync/#kotlin.String#kotlin.collections.List[kotlin.String?]?#kotlin.collections.List[kotlin.String?]?#kotlin.Boolean#kotlin.Int#kotlin.Boolean#kotlin.String?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/process-document-url-async.html
-$dokka.location:com.veryfi.kotlin/ClientImpl/setAPIVersion/#kotlin.Int/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/set-a-p-i-version.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/setBaseUrl/#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/set-base-url.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/setHttpClient/#java.net.http.HttpClient/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/set-http-client.html
 $dokka.location:com.veryfi.kotlin/ClientImpl/setTimeOut/#kotlin.Int/PointingToDeclaration/kotlin/com.veryfi.kotlin/-client-impl/set-time-out.html

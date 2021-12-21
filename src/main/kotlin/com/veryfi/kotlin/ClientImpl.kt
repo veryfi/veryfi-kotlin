@@ -50,7 +50,7 @@ class ClientImpl(
     private val clientSecret: String,
     private val username: String,
     private val apiKey: String,
-    private var apiVersion: Int = 8
+    private val apiVersion: Int
 ) :
     Client {
     private val logger = Logger.getLogger("ClientImpl")
@@ -500,14 +500,6 @@ class ClientImpl(
             }
         }
         return requestAsync(HttpMethod.PUT, endpointName, requestArguments)
-    }
-
-    /**
-     *
-     * @param version of the API by default is 7
-     */
-    override fun setAPIVersion(version: Int) {
-        apiVersion = version
     }
 
     /**

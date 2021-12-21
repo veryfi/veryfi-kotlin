@@ -127,12 +127,6 @@ interface Client {
     fun updateDocumentAsync(documentId: String, parameters: JSONObject?): CompletableFuture<String>
 
     /**
-     * Change the default API version
-     * @param version of the API by default is 7
-     */
-    fun setAPIVersion(version: Int)
-
-    /**
      * Define new time out for the requests in seconds
      * @param timeOut of the http requests in seconds
      */

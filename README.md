@@ -14,14 +14,20 @@ Install from [Maven](https://mvnrepository.com/) using gradle, a package manager
 Install the package from Maven using gradle:
 
 Gradle using Groovy:
+
+```java
 dependencies {
     implementation 'com.veryfi:veryfi-kotlin:1.0.0'
 }
+```
 
 Gradle using Koltin:
+
+```java
 dependencies {
     implementation("com.veryfi:veryfi-kotlin:1.0.0")
 }
+```
 
 ## Getting Started
 

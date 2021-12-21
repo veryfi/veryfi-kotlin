@@ -49,13 +49,13 @@ class ClientImpl(
     private val clientId: String,
     private val clientSecret: String,
     private val username: String,
-    private val apiKey: String
+    private val apiKey: String,
+    private var apiVersion: Int = 8
 ) :
     Client {
     private val logger = Logger.getLogger("ClientImpl")
     private var baseUrl = "https://api.veryfi.com/api/"
     private var timeOut = 120
-    private var apiVersion = 7
     private var httpClient: HttpClient
 
     /**

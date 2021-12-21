@@ -19,7 +19,7 @@ repositories {
 
 jacoco {
 	toolVersion = "0.8.7"
-	reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))
+	reportsDirectory.set(layout.buildDirectory.dir("jacocoReports"))
 }
 
 tasks.jacocoTestReport {

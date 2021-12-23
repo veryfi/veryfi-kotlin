@@ -7,11 +7,50 @@ plugins {
 	kotlin("plugin.spring") version "1.6.0"
 	id("org.jetbrains.dokka") version "1.6.0"
 	jacoco
+	id("maven-publish")
 }
 
-group = "com.veryfi"
-version = "1.0.0"
-java.sourceCompatibility = JavaVersion.VERSION_11
+afterEvaluate {
+	publishing {
+		repositories {
+			maven {
+				name = "OSSRH";
+				setUrl("https://s01.oss.sonatype.org/content/repositories/releases")
+				credentials {
+					username = System.getenv("MAVEN_USERNAME")
+					password = System.getenv("MAVEN_PASSWORD")
+				}
+			}
+		}
+		publications.withType<MavenPublication> {
+
+			groupId = "com.veryfi"
+			artifactId = "veryfi-kotlin"
+			version = "1.0.0"
+			pom {
+				name.set("Veyfi Kotlin")
+				description.set("Android kotlin module for communicating with the Veryfi OCR API")
+				url.set("https://github.com/veryfi/veryfi-kotlin")
+				licenses {
+					license {
+						name.set("MIT")
+						url.set("https://opensource.org/licenses/MIT")
+					}
+				}
+				developers {
+					developer {
+						id.set("androide0917")
+						name.set("Yuber Garcia")
+						email.set("yubergarcia@veryfi.com")
+					}
+				}
+				scm {
+					url.set("https://github.com/veryfi/veryfi-kotlin")
+				}
+			}
+		}
+	}
+}
 
 repositories {
 	mavenCentral()

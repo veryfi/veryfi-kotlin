@@ -10,23 +10,14 @@ plugins {
 	id("maven-publish")
 }
 
-afterEvaluate {
-	publishing {
-		repositories {
-			maven {
-				name = "OSSRH";
-				setUrl("https://s01.oss.sonatype.org/content/repositories/releases")
-				credentials {
-					username = System.getenv("MAVEN_USERNAME")
-					password = System.getenv("MAVEN_PASSWORD")
-				}
-			}
-		}
-		publications.withType<MavenPublication> {
 
+publishing {
+	publications {
+		create<MavenPublication>("mavenJava") {
 			groupId = "com.veryfi"
 			artifactId = "veryfi-kotlin"
 			version = "1.0.0"
+			from(components["java"])
 			pom {
 				name.set("Veyfi Kotlin")
 				description.set("Android kotlin module for communicating with the Veryfi OCR API")
@@ -47,6 +38,16 @@ afterEvaluate {
 				scm {
 					url.set("https://github.com/veryfi/veryfi-kotlin")
 				}
+			}
+		}
+	}
+	repositories {
+		maven {
+			name = "OSSRH";
+			setUrl("https://s01.oss.sonatype.org/content/repositories/releases")
+			credentials {
+				username = System.getenv("MAVEN_USERNAME")
+				password = System.getenv("MAVEN_PASSWORD")
 			}
 		}
 	}

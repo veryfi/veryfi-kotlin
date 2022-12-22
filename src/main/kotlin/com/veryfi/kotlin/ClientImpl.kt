@@ -19,7 +19,7 @@ import com.veryfi.kotlin.Constants.MAX_PAGES_TO_PROCESS
 import com.veryfi.kotlin.Constants.SHA256
 import com.veryfi.kotlin.Constants.TIMESTAMP
 import com.veryfi.kotlin.Constants.USER_AGENT
-import com.veryfi.kotlin.Constants.USER_AGENT_JAVA
+import com.veryfi.kotlin.Constants.USER_AGENT_KOTLIN
 import com.veryfi.kotlin.Constants.X_VERYFI_REQUEST_SIGNATURE
 import com.veryfi.kotlin.Constants.X_VERYFI_REQUEST_TIMESTAMP
 import org.json.JSONObject
@@ -186,7 +186,7 @@ class ClientImpl(
         val timeStamp = date.time
         val headers: MutableList<String> = ArrayList()
         val jsonHeaders = JSONObject()
-        jsonHeaders.put(USER_AGENT, USER_AGENT_JAVA)
+        jsonHeaders.put(USER_AGENT, USER_AGENT_KOTLIN)
         jsonHeaders.put(ACCEPT, APPLICATION_JSON)
         jsonHeaders.put(CONTENT_TYPE, APPLICATION_JSON)
         jsonHeaders.put(CLIENT_ID, clientId)

@@ -19,12 +19,12 @@ import java.util.concurrent.ExecutionException
 @Suppress("UNCHECKED_CAST")
 @SpringBootTest
 class ClientTest {
-    private var clientId = "your_client_id"
-    private var clientSecret = "your_client_secret"
-    private var username = "your_username"
-    private var apiKey = "your_password"
+    private var clientId = "vrfdR0ALCMGfx32RO0gMFyfZeJT7UCliNxZZLnG"
+    private var clientSecret = "dNjx4jrzTxHjjn0cCLeApnz2ujHIsh3BtX6AHoRbhFLOOdctv785PItaORS1BowTeOzY67mlVj1KxR3k6h9gPvlExi4KLRAxFV8oHptHyJS7WY482Z0gYxZWvcxNMh1B"
+    private var username = "devapitest"
+    private var apiKey = "1171431d8e6eb8478a50d872bcb2dc51"
     private var client = createClient(clientId, clientSecret, username, apiKey) as ClientImpl
-    private var mockResponses = true // Change to “false” if you want to test your personal credential
+    private var mockResponses = false // Change to “false” if you want to test your personal credential
 
     @Test
     @Throws(IOException::class, InterruptedException::class)
@@ -61,7 +61,7 @@ class ClientTest {
     @Test
     @Throws(IOException::class, InterruptedException::class)
     fun getDocumentTest() {
-        val documentId = "31727276" // Change to your document Id
+        val documentId = "125344108" // Change to your document Id
         if (mockResponses) {
             val httpClient = mock(HttpClient::class.java)
             client.setHttpClient(httpClient)
@@ -91,9 +91,9 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.jpeg", categories, false, null)
+        val jsonResponse = client.processDocument("receipt.jpg", categories, false, null)
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))
+        Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
     }
 
     @Test
@@ -101,7 +101,6 @@ class ClientTest {
     fun processDocumentTestWithParameters() {
         val categories = listOf("Advertising & Marketing", "Automotive")
         val parameters = JSONObject()
-        parameters.put("p1", "p1value")
         if (mockResponses) {
             val httpClient = mock(HttpClient::class.java)
             client.setHttpClient(httpClient)
@@ -112,9 +111,9 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.jpeg", categories, false, parameters)
+        val jsonResponse = client.processDocument("receipt.jpg", categories, false, parameters)
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))
+        Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
     }
 
     @Test
@@ -130,15 +129,15 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.jpeg", null, false, null)
+        val jsonResponse = client.processDocument("receipt.jpg", null, false, null)
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))
+        Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
     }
 
     @Test
     @Throws(IOException::class, InterruptedException::class)
     fun updateDocumentTest() {
-        val documentId = "31727276" // Change to your document Id
+        val documentId = "125344108" // Change to your document Id
         val parameters = JSONObject()
         val notes = "Note updated"
         parameters.put("notes", notes)
@@ -216,9 +215,8 @@ class ClientTest {
             `when`(httpResponse.body()).thenReturn(result)
         }
         val parameters = JSONObject()
-        parameters.put("p1", "p1value")
         val jsonResponse = client.processDocumentUrl(
-            "https://cdn.veryfi.com/receipts/92233902-c94a-491d-a4f9-0d61f9407cd2.pdf",
+            "",
             listOf("https://cdn.veryfi.com/receipts/92233902-c94a-491d-a4f9-0d61f9407cd2.pdf"),
             null,
             false,
@@ -256,7 +254,7 @@ class ClientTest {
     @Test
     @Throws(ExecutionException::class, InterruptedException::class, IOException::class)
     fun getDocumentAsyncTest() {
-        val documentId = "31727276" // Change to your document Id
+        val documentId = "125344108" // Change to your document Id
         if (mockResponses) {
             val httpClient = mock(HttpClient::class.java)
             client.setHttpClient(httpClient)
@@ -293,16 +291,16 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponseFuture = client.processDocumentAsync("receipt.jpeg", categories, false, null)
+        val jsonResponseFuture = client.processDocumentAsync("receipt.jpg", categories, false, null)
         val jsonResponse = jsonResponseFuture.get()
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("In-n-out Burger", document.getJSONObject("vendor").getString("name"))
+        Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
     }
 
     @Test
     @Throws(ExecutionException::class, InterruptedException::class, IOException::class)
     fun updateDocumentAsyncTest() {
-        val documentId = "31727276" // Change to your document Id
+        val documentId = "125344108" // Change to your document Id
         val parameters = JSONObject()
         val notes = "Note updated"
         parameters.put("notes", notes)

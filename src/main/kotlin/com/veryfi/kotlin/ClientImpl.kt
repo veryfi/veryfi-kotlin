@@ -17,7 +17,6 @@ import com.veryfi.kotlin.Constants.FORM_URL_ENCODED
 import com.veryfi.kotlin.Constants.LIST_CATEGORIES
 import com.veryfi.kotlin.Constants.MAX_PAGES_TO_PROCESS
 import com.veryfi.kotlin.Constants.SHA256
-import com.veryfi.kotlin.Constants.TIMESTAMP
 import com.veryfi.kotlin.Constants.USER_AGENT
 import com.veryfi.kotlin.Constants.USER_AGENT_KOTLIN
 import com.veryfi.kotlin.Constants.X_VERYFI_REQUEST_SIGNATURE
@@ -196,7 +195,7 @@ class ClientImpl(
             headers.add(FORM_URL_ENCODED)
         }
         jsonHeaders.put(X_VERYFI_REQUEST_TIMESTAMP, timeStamp.toString())
-        jsonHeaders.put(X_VERYFI_REQUEST_SIGNATURE, generateSignature(timeStamp, requestArguments))
+        jsonHeaders.put(X_VERYFI_REQUEST_SIGNATURE, generateSignature(requestArguments))
         for (key in JSONObject.getNames(jsonHeaders)) {
             headers.add(key)
             headers.add(jsonHeaders.getString(key))
@@ -210,8 +209,7 @@ class ClientImpl(
      * @param payloadParams JSON params to be sent to API request
      * @return Unique signature generated using the client_secret and the payload
      */
-    private fun generateSignature(timeStamp: Long, payloadParams: JSONObject?): String {
-        payloadParams?.put(TIMESTAMP, timeStamp.toString())
+    private fun generateSignature(payloadParams: JSONObject?): String {
         val payload = payloadParams.toString()
         val secretBytes = clientSecret.toByteArray(StandardCharsets.UTF_8)
         val payloadBytes = payload.toByteArray(StandardCharsets.UTF_8)
@@ -493,7 +491,6 @@ class ClientImpl(
     override fun updateDocumentAsync(documentId: String, parameters: JSONObject?): CompletableFuture<String> {
         val endpointName = "/documents/$documentId/"
         val requestArguments = JSONObject()
-        requestArguments.put("id", documentId)
         parameters?.let {
             for (key in JSONObject.getNames(it)) {
                 requestArguments.put(key, it[key])

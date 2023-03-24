@@ -289,11 +289,11 @@ class ClientImpl(
             categoriesLocal = LIST_CATEGORIES
         }
         val fileName = filePath.replace("^.*[/\\\\]".toRegex(), "")
-        val fileStream = ClassLoader.getSystemResourceAsStream(filePath)
+        val file = File(filePath)
         var base64EncodedString: String? = ""
         try {
-            if (fileStream != null) {
-                base64EncodedString = Base64.getEncoder().encodeToString(fileStream.readAllBytes())
+            if (file.exists() && file.canRead()) {
+                base64EncodedString = Base64.getEncoder().encodeToString(file.readBytes())
             }
         } catch (e: IOException) {
             logger.severe(e.message)

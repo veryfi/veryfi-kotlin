@@ -16,7 +16,7 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			groupId = "com.veryfi"
 			artifactId = "veryfi-kotlin"
-			version = "1.0.7"
+			version = "1.0.8"
 			from(components["java"])
 			pom {
 				name.set("Veyfi Kotlin")
@@ -30,9 +30,9 @@ publishing {
 				}
 				developers {
 					developer {
-						id.set("androide0917")
-						name.set("Yuber Garcia")
-						email.set("yubergarcia@veryfi.com")
+						id.set("Veryfi")
+						name.set("Veryfi")
+						email.set("support@veryfi.com")
 					}
 				}
 				scm {

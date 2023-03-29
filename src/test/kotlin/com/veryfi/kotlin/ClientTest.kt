@@ -91,7 +91,8 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.jpg", categories, false, null)
+        val path = ClassLoader.getSystemResource("receipt.jpg").path
+        val jsonResponse = client.processDocument(path, categories, false, null)
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
     }
@@ -111,7 +112,8 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.jpg", categories, false, parameters)
+        val path = ClassLoader.getSystemResource("receipt.jpg").path
+        val jsonResponse = client.processDocument(path, categories, false, parameters)
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
     }
@@ -129,7 +131,9 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processDocument("receipt.jpg", null, false, null)
+
+        val path = ClassLoader.getSystemResource("receipt.jpg").path
+        val jsonResponse = client.processDocument(path, null, false, null)
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
     }
@@ -198,7 +202,7 @@ class ClientTest {
             null
         )
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("Rumpke", document.getJSONObject("vendor").getString("name"))
+        Assertions.assertEquals("Rumpke Of Ohio", document.getJSONObject("vendor").getString("name"))
     }
 
     @Test
@@ -226,7 +230,7 @@ class ClientTest {
             parameters
         )
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("Rumpke", document.getJSONObject("vendor").getString("name"))
+        Assertions.assertEquals("Rumpke Of Ohio", document.getJSONObject("vendor").getString("name"))
     }
 
     @Test
@@ -291,7 +295,8 @@ class ClientTest {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponseFuture = client.processDocumentAsync("receipt.jpg", categories, false, null)
+        val path = ClassLoader.getSystemResource("receipt.jpg").path
+        val jsonResponseFuture = client.processDocumentAsync(path, categories, false, null)
         val jsonResponse = jsonResponseFuture.get()
         val document = JSONObject(jsonResponse)
         Assertions.assertEquals("Walgreens", document.getJSONObject("vendor").getString("name"))
@@ -372,7 +377,7 @@ class ClientTest {
         )
         val jsonResponse = jsonResponseFuture.get()
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("Rumpke", document.getJSONObject("vendor").getString("name"))
+        Assertions.assertEquals("Rumpke Of Ohio", document.getJSONObject("vendor").getString("name"))
     }
 
     @Test

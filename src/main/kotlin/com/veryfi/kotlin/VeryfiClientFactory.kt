@@ -13,6 +13,6 @@ object VeryfiClientFactory {
      * @return the new instance.
      */
     fun createClient(clientId: String, clientSecret: String, username: String, apiKey: String, apiVersion: Int = 8): Client {
-        return ClientImpl(clientId, clientSecret, username, apiKey, apiVersion)
+        return Client(clientId, clientSecret, username, apiKey, apiVersion)
     }
 }

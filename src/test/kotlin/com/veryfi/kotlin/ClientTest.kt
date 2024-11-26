@@ -1,6 +1,7 @@
 package com.veryfi.kotlin
 
 import com.veryfi.kotlin.VeryfiClientFactory.createClient
+import com.veryfi.kotlin.documents.*
 import org.json.JSONObject
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -23,7 +24,7 @@ class ClientTest {
     private var clientSecret = "your_client_secret"
     private var username = "your_username"
     private var apiKey = "your_password"
-    private var client = createClient(clientId, clientSecret, username, apiKey) as ClientImpl
+    private var client = createClient(clientId, clientSecret, username, apiKey) as Client
     private var mockResponses = true // Change to “false” if you want to test your personal credential
 
     @Test
@@ -384,7 +385,7 @@ class ClientTest {
     @Throws(ExecutionException::class, InterruptedException::class, IOException::class)
     fun badCredentialsTest() {
         val clientTmp =
-            createClient("bad_credentials", "bad_credentials", "bad_credentials", "bad_credentials") as ClientImpl
+            createClient("bad_credentials", "bad_credentials", "bad_credentials", "bad_credentials") as Client
         val jsonResponse = clientTmp.getDocuments()
         val documents = JSONObject(jsonResponse)
         Assertions.assertTrue(documents.get("message") == "Not Authorized")

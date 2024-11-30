@@ -57,57 +57,72 @@ object Constants {
     /**
      * header for HttpRequest
      */
-    const val TIMESTAMP = "timestamp"
-
-    /**
-     * header for HttpRequest
-     */
     const val SHA256 = "HmacSHA256"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val FILE_NAME = "file_name"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val FILE_DATA = "file_data"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val CATEGORIES = "categories"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val AUTO_DELETE = "auto_delete"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val BOOST_MODE = "boost_mode"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val EXTERNAL_ID = "external_id"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val FILE_URL = "file_url"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val FILE_URLS = "file_urls"
 
     /**
-     * header for HttpRequest
+     * param for HttpRequest
      */
     const val MAX_PAGES_TO_PROCESS = "max_pages_to_process"
+
+    /**
+     * param for HttpRequest
+     */
+    const val TEMPLATE_NAME = "template_name"
+
+    /**
+     * param for HttpRequest
+     */
+    const val ORDER = "order"
+
+    /**
+     * param for HttpRequest
+     */
+    const val DESCRIPTION = "description"
+
+    /**
+     * param for HttpRequest
+     */
+    const val TOTAL = "total"
 
     /**
      * default list of categories.

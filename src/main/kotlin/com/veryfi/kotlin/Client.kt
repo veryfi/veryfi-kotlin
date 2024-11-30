@@ -6,10 +6,8 @@ import com.veryfi.kotlin.Constants.AUTHORIZATION
 import com.veryfi.kotlin.Constants.CLIENT_ID
 import com.veryfi.kotlin.Constants.CONTENT_TYPE
 import com.veryfi.kotlin.Constants.FORM_URL_ENCODED
-import com.veryfi.kotlin.Constants.SHA256
 import com.veryfi.kotlin.Constants.USER_AGENT
 import com.veryfi.kotlin.Constants.USER_AGENT_KOTLIN
-import com.veryfi.kotlin.Constants.X_VERYFI_REQUEST_SIGNATURE
 import com.veryfi.kotlin.Constants.X_VERYFI_REQUEST_TIMESTAMP
 import org.json.JSONObject
 import java.io.*
@@ -17,26 +15,19 @@ import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
-import java.nio.charset.StandardCharsets
-import java.security.InvalidKeyException
-import java.security.NoSuchAlgorithmException
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.CompletableFuture
 import java.util.logging.Logger
-import javax.crypto.Mac
-import javax.crypto.spec.SecretKeySpec
 
 /**
  *  Veryfi API client for kotlin
  * @param clientId the [String] provided by Veryfi.
- * @param clientSecret the [String] provided by Veryfi.
  * @param username the [String] provided by Veryfi.
  * @param apiKey the [String] provided by Veryfi.
  */
 class Client(
     private val clientId: String,
-    private val clientSecret: String,
     private val username: String,
     private val apiKey: String,
     private val apiVersion: Int
@@ -184,37 +175,11 @@ class Client(
             headers.add(FORM_URL_ENCODED)
         }
         jsonHeaders.put(X_VERYFI_REQUEST_TIMESTAMP, timeStamp.toString())
-        jsonHeaders.put(X_VERYFI_REQUEST_SIGNATURE, generateSignature(requestArguments))
         for (key in JSONObject.getNames(jsonHeaders)) {
             headers.add(key)
             headers.add(jsonHeaders.getString(key))
         }
         return headers
-    }
-
-    /**
-     * Generate unique signature for payload params.
-     * @param timeStamp Unix Long timestamp
-     * @param payloadParams JSON params to be sent to API request
-     * @return Unique signature generated using the client_secret and the payload
-     */
-    private fun generateSignature(payloadParams: JSONObject?): String {
-        val payload = payloadParams.toString()
-        val secretBytes = clientSecret.toByteArray(StandardCharsets.UTF_8)
-        val payloadBytes = payload.toByteArray(StandardCharsets.UTF_8)
-        val keySpec = SecretKeySpec(secretBytes, SHA256)
-        val mac: Mac = try {
-            Mac.getInstance(SHA256)
-        } catch (e: NoSuchAlgorithmException) {
-            return e.message + ""
-        }
-        try {
-            mac.init(keySpec)
-        } catch (e: InvalidKeyException) {
-            return e.message + ""
-        }
-        val macBytes = mac.doFinal(payloadBytes)
-        return Base64.getEncoder().encodeToString(macBytes)
     }
 
     /**

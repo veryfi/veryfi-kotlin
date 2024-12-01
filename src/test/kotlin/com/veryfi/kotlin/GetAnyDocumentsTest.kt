@@ -1,6 +1,6 @@
 package com.veryfi.kotlin
 
-import com.veryfi.kotlin.w2s.*
+import com.veryfi.kotlin.anydocuments.*
 import org.json.JSONObject
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -18,59 +18,47 @@ import java.util.concurrent.ExecutionException
 
 @Suppress("UNCHECKED_CAST")
 @SpringBootTest
-class ProcessW2UrlTest: ClientTest() {
+class GetAnyDocumentsTest: ClientTest() {
 
     @Test
     @Throws(IOException::class, InterruptedException::class)
-    fun processW2UrlTest() {
+    fun getAnyDocumentsTest() {
         if (mockResponses) {
             val httpClient = mock(HttpClient::class.java)
             client.setHttpClient(httpClient)
-            val fileStream = ClassLoader.getSystemResourceAsStream("processW2.json")!!
+            val fileStream = ClassLoader.getSystemResourceAsStream("getAnyDocuments.json")!!
             val result = String(fileStream.readAllBytes())
             val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
             `when`(httpClient.send(any(HttpRequest::class.java), any<BodyHandler<String>>())).thenReturn(httpResponse)
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processW2Url(
-            "https://cdn.veryfi.com/wp-content/uploads/image.png",
-            null,
-            null
-        )
-        val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("The Big Company", document.getString("employer_name"))
+        val jsonResponse = client.getAnyDocuments()
+        val documents = JSONObject(jsonResponse)
+        Assertions.assertTrue(documents.length() > 0)
     }
 
     @Test
     @Throws(IOException::class, InterruptedException::class)
-    fun processW2UrlTestWithFileUrls() {
-        if (mockResponses) {
-            val httpClient = mock(HttpClient::class.java)
-            client.setHttpClient(httpClient)
-            val fileStream = ClassLoader.getSystemResourceAsStream("processW2.json")!!
-            val result = String(fileStream.readAllBytes())
-            val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
-            `when`(httpClient.send(any(HttpRequest::class.java), any<BodyHandler<String>>())).thenReturn(httpResponse)
-            `when`(httpResponse.statusCode()).thenReturn(200)
-            `when`(httpResponse.body()).thenReturn(result)
-        }
-        val jsonResponse = client.processW2Url(
-            null,
-            listOf("https://cdn.veryfi.com/wp-content/uploads/image.png"),
-            null
-        )
-        val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("The Big Company", document.getString("employer_name"))
+    fun getAnyDocumentsTestWithException() {
+        val httpClient = mock(HttpClient::class.java)
+        client.setHttpClient(httpClient)
+        `when`(
+            httpClient.send(
+                any(HttpRequest::class.java), any<BodyHandler<String>>()
+            )
+        ).thenThrow(InterruptedException())
+        val jsonResponse = client.getAnyDocuments()
+        Assertions.assertEquals("", jsonResponse)
     }
 
     @Test
     @Throws(ExecutionException::class, InterruptedException::class, IOException::class)
-    fun processW2UrlAsyncTest() {
+    fun getAnyDocumentsAsyncTest() {
         if (mockResponses) {
             val httpClient = mock(HttpClient::class.java)
             client.setHttpClient(httpClient)
-            val fileStream = ClassLoader.getSystemResourceAsStream("processW2.json")!!
+            val fileStream = ClassLoader.getSystemResourceAsStream("getAnyDocuments.json")!!
             val result = String(fileStream.readAllBytes())
             val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
             val jsonResponseFuture = CompletableFuture.completedFuture(httpResponse)
@@ -80,13 +68,9 @@ class ProcessW2UrlTest: ClientTest() {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponseFuture = client.processW2UrlAsync(
-            "https://cdn.veryfi.com/wp-content/uploads/image.png",
-            null,
-            null
-        )
+        val jsonResponseFuture = client.getAnyDocumentsAsync()
         val jsonResponse = jsonResponseFuture.get()
-        val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("The Big Company", document.getString("employer_name"))
+        val documents = JSONObject(jsonResponse)
+        Assertions.assertTrue(documents.length() > 0)
     }
 }

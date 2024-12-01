@@ -1,7 +1,7 @@
 package com.veryfi.kotlin
 
-import com.veryfi.kotlin.bankstatements.processBankStatementUrl
-import com.veryfi.kotlin.bankstatements.processBankStatementUrlAsync
+import com.veryfi.kotlin.documents.getLineItem
+import com.veryfi.kotlin.documents.getLineItemAsync
 import org.json.JSONObject
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -19,59 +19,33 @@ import java.util.concurrent.ExecutionException
 
 @Suppress("UNCHECKED_CAST")
 @SpringBootTest
-class ProcessBankStatementsUrlTest: ClientTest() {
+class GetLineItemTest: ClientTest() {
 
     @Test
     @Throws(IOException::class, InterruptedException::class)
-    fun processBankStatementUrlTest() {
+    fun getLineItemTest() {
         if (mockResponses) {
             val httpClient = mock(HttpClient::class.java)
             client.setHttpClient(httpClient)
-            val fileStream = ClassLoader.getSystemResourceAsStream("processBankStatement.json")!!
+            val fileStream = ClassLoader.getSystemResourceAsStream("getLineItem.json")!!
             val result = String(fileStream.readAllBytes())
             val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
             `when`(httpClient.send(any(HttpRequest::class.java), any<BodyHandler<String>>())).thenReturn(httpResponse)
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponse = client.processBankStatementUrl(
-            "https://cdn-dev.veryfi.com/testing/veryfi-python/bankstatement.pdf",
-            null,
-            null
-        )
+        val jsonResponse = client.getLineItem("63480993", "190399931")
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("Mr Robot Roboto", document.getString("account_holder_name"))
-    }
-
-    @Test
-    @Throws(IOException::class, InterruptedException::class)
-    fun processBankStatementUrlTestWithFileUrls() {
-        if (mockResponses) {
-            val httpClient = mock(HttpClient::class.java)
-            client.setHttpClient(httpClient)
-            val fileStream = ClassLoader.getSystemResourceAsStream("processBankStatement.json")!!
-            val result = String(fileStream.readAllBytes())
-            val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
-            `when`(httpClient.send(any(HttpRequest::class.java), any<BodyHandler<String>>())).thenReturn(httpResponse)
-            `when`(httpResponse.statusCode()).thenReturn(200)
-            `when`(httpResponse.body()).thenReturn(result)
-        }
-        val jsonResponse = client.processBankStatementUrl(
-            null,
-            listOf("https://cdn-dev.veryfi.com/testing/veryfi-python/bankstatement.pdf"),
-            null
-        )
-        val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("Mr Robot Roboto", document.getString("account_holder_name"))
+        Assertions.assertEquals(190399931, document.getInt("id"))
     }
 
     @Test
     @Throws(ExecutionException::class, InterruptedException::class, IOException::class)
-    fun processBankStatementUrlAsyncTest() {
+    fun getLineItemAsyncTest() {
         if (mockResponses) {
             val httpClient = mock(HttpClient::class.java)
             client.setHttpClient(httpClient)
-            val fileStream = ClassLoader.getSystemResourceAsStream("processBankStatement.json")!!
+            val fileStream = ClassLoader.getSystemResourceAsStream("getLineItem.json")!!
             val result = String(fileStream.readAllBytes())
             val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
             val jsonResponseFuture = CompletableFuture.completedFuture(httpResponse)
@@ -81,13 +55,9 @@ class ProcessBankStatementsUrlTest: ClientTest() {
             `when`(httpResponse.statusCode()).thenReturn(200)
             `when`(httpResponse.body()).thenReturn(result)
         }
-        val jsonResponseFuture = client.processBankStatementUrlAsync(
-            "https://cdn-dev.veryfi.com/testing/veryfi-python/bankstatement.pdf",
-            null,
-            null
-        )
+        val jsonResponseFuture = client.getLineItemAsync("63480993", "190399931")
         val jsonResponse = jsonResponseFuture.get()
         val document = JSONObject(jsonResponse)
-        Assertions.assertEquals("Mr Robot Roboto", document.getString("account_holder_name"))
+        Assertions.assertEquals(190399931, document.getInt("id"))
     }
 }

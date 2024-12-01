@@ -125,6 +125,16 @@ object Constants {
     const val TOTAL = "total"
 
     /**
+     * param for HttpRequest
+     */
+    const val NAME = "name"
+
+    /**
+     * param for HttpRequest
+     */
+    const val TAGS = "tags"
+
+    /**
      * default list of categories.
      */
     val LIST_CATEGORIES: List<String> = listOf(

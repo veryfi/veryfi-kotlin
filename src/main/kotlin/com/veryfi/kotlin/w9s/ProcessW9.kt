@@ -42,7 +42,7 @@ private fun Client.getProcessW9Arguments(
 }
 
 /**
- * Process a w9 and extract all the fields from it
+ * Upload a w9 document from a file path. https://docs.veryfi.com/api/w9s/process-a-w-9/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
  * @return the data extracted from the W9 String]
@@ -57,7 +57,7 @@ fun Client.processW9(
 }
 
 /**
- * Process a w9 and extract all the fields from it
+ * Upload a w9 document from a file path. https://docs.veryfi.com/api/w9s/process-a-w-9/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
  * @return the data extracted from the W9 String]

@@ -6,7 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
- * Get line items of an existing document
+ * Get line items of an existing document. https://docs.veryfi.com/api/receipts-invoices/get-document-line-items/
  * @return the list of line items
  */
 fun Client.getDocumentLineItems(
@@ -17,7 +17,7 @@ fun Client.getDocumentLineItems(
 }
 
 /**
- * Get line items of an existing document
+ * Get line items of an existing document. https://docs.veryfi.com/api/receipts-invoices/get-document-line-items/
  * @return the list of line items
  */
 fun Client.getDocumentLineItemsAsync(

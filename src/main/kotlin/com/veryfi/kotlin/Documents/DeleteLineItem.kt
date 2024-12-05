@@ -6,7 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
- * Deletes a line item to an existing document
+ * Deletes a line item to an existing document. https://docs.veryfi.com/api/receipts-invoices/delete-a-line-item/
  * @param lineItemId Id of line item
  * @return the status
  */
@@ -19,7 +19,7 @@ fun Client.deleteLineItem(
 }
 
 /**
- * Deletes a line item to an existing document
+ * Deletes a line item to an existing document. https://docs.veryfi.com/api/receipts-invoices/delete-a-line-item/
  * @param lineItemId Id of line item
  * @return the status
  */

@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * https://docs.veryfi.com/api/receipts-invoices/update-a-document/
  * Update data for a previously processed document, including almost any field like `vendor`, `date`, `notes` etc.
  * @param documentId ID of the document you'd like to update.
  * @param parameters Additional request parameters
@@ -17,6 +18,7 @@ fun Client.updateDocument(documentId: String, parameters: JSONObject?): String {
 }
 
 /**
+ * https://docs.veryfi.com/api/receipts-invoices/update-a-document/
  * Update data for a previously processed document, including almost any field like `vendor`, `date`, `notes` etc.
  * @param documentId ID of the document you'd like to update.
  * @param parameters Additional request parameters

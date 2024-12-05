@@ -34,7 +34,7 @@ private fun Client.getProcessW8BenEUrlArguments(
 }
 
 /**
- * Process W8BenE from url and extract all the fields from it.
+ * Process W-8BEN-E and extract all the fields from it. https://docs.veryfi.com/api/w-8ben-e/process-a-w-8-ben-e/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters
@@ -54,7 +54,7 @@ fun Client.processW8BenEUrl(
 }
 
 /**
- * Process W8BenE from url and extract all the fields from it.
+ * Process W-8BEN-E and extract all the fields from it. https://docs.veryfi.com/api/w-8ben-e/process-a-w-8-ben-e/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters

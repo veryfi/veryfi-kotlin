@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * Get a specific bank statement. https://docs.veryfi.com/api/bank-statements/get-a-bank-statement/
  * Returns a json string [String] bank statement information
  * @param documentId ID of the bank statement you'd like to retrieve.
  * @return the data extracted from the Bank Statement [String]
@@ -18,6 +19,7 @@ fun Client.getBankStatement(documentId: String): String {
 }
 
 /**
+ * Get a specific bank statement. https://docs.veryfi.com/api/bank-statements/get-a-bank-statement/
  * Returns a json string [String] bank statement information
  * @param documentId ID of the bank statement you'd like to retrieve.
  * @return the data extracted from the Bank Statement [String]

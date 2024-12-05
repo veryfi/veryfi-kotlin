@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * Get a specific W-8BEN-E. https://docs.veryfi.com/api/w-8ben-e/get-a-w-8-ben-e/
  * Returns a json string [String] W8BenE information
  * @param documentId ID of the W8BenE you'd like to retrieve.
  * @return the data extracted from the W8BenE  [String]
@@ -18,6 +19,7 @@ fun Client.getW8BenE(documentId: String): String {
 }
 
 /**
+ * Get a specific W-8BEN-E. https://docs.veryfi.com/api/w-8ben-e/get-a-w-8-ben-e/
  * Returns a json string [String] W8BenE information
  * @param documentId ID of the W8BenE you'd like to retrieve.
  * @return the data extracted from the W8BenE  [String]

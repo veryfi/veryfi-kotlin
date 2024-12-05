@@ -1,4 +1,4 @@
-package com.veryfi.kotlin.w2s
+package com.veryfi.kotlin.businessCards
 
 import com.veryfi.kotlin.Client
 import com.veryfi.kotlin.Constants.FILE_DATA
@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture
  * @param parameters Additional request parameters
  * @return the JSON object of the parameters of the request
  */
-private fun Client.getProcessW2Arguments(
+private fun Client.getProcessBusinessCardArguments(
     filePath: String,
     parameters: JSONObject?
 ): JSONObject {
@@ -42,32 +42,32 @@ private fun Client.getProcessW2Arguments(
 }
 
 /**
- * Upload a document from a file path https://docs.veryfi.com/api/w2s/process-a-w-2/
+ * Process Business card and extract all the fields from it. https://docs.veryfi.com/api/business-cards/process-a-business-card/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
- * @return the data extracted from the W2 String]
+ * @return the data extracted from the Business Card String]
  */
-fun Client.processW2(
+fun Client.processBusinessCard(
     filePath: String,
     parameters: JSONObject?
 ): String {
-    val endpointName = "/w2s/"
-    val requestArguments = getProcessW2Arguments(filePath, parameters)
+    val endpointName = "/business-cards/"
+    val requestArguments = getProcessBusinessCardArguments(filePath, parameters)
     return request(HttpMethod.POST, endpointName, requestArguments)
 }
 
 /**
- * Upload a document from a file path https://docs.veryfi.com/api/w2s/process-a-w-2/
+ * Process Business card and extract all the fields from it. https://docs.veryfi.com/api/business-cards/process-a-business-card/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
- * @return the data extracted from the W2 String]
+ * @return the data extracted from the Business Card String]
  */
-fun Client.processW2Async(
+fun Client.processBusinessCardAsync(
     filePath: String,
     parameters: JSONObject?
 ): CompletableFuture<String> {
-    val endpointName = "/w2s/"
-    val requestArguments = getProcessW2Arguments(filePath, parameters)
+    val endpointName = "/business-cards/"
+    val requestArguments = getProcessBusinessCardArguments(filePath, parameters)
     return requestAsync(HttpMethod.POST, endpointName, requestArguments)
 }
 

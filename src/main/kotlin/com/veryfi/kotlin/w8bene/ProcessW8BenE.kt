@@ -42,7 +42,7 @@ private fun Client.getProcessW8BenEArguments(
 }
 
 /**
- * Process a w8BenE and extract all the fields from it
+ * Process a W-8BEN-E document. https://docs.veryfi.com/api/w-8ben-e/process-a-w-8-ben-e/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
  * @return the data extracted from the w8BenE String]
@@ -57,7 +57,7 @@ fun Client.processW8BenE(
 }
 
 /**
- * Process a w8BenE and extract all the fields from it
+ * Process a W-8BEN-E document. https://docs.veryfi.com/api/w-8ben-e/process-a-w-8-ben-e/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
  * @return the data extracted from the w8BenE String]

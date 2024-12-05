@@ -53,7 +53,7 @@ private fun Client.getProcessDocumentUrlArguments(
 }
 
 /**
- * Process Document from url and extract all the fields from it.
+ * Process document from url and extract all the fields from it. https://docs.veryfi.com/api/receipts-invoices/process-a-document/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param categories List of categories to use when categorizing the document
@@ -84,7 +84,7 @@ fun Client.processDocumentUrl(
 }
 
 /**
- * Process Document from url and extract all the fields from it.
+ * Process document from url and extract all the fields from it. https://docs.veryfi.com/api/receipts-invoices/process-a-document/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param categories List of categories to use when categorizing the document

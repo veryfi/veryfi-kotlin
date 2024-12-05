@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * Get JSON of documents. https://docs.veryfi.com/api/receipts-invoices/search-documents/
  * Returns a json string [String] with the list of documents.
  * @return the url [String]
  */
@@ -16,6 +17,7 @@ fun Client.getDocuments(): String {
 }
 
 /**
+ * Get JSON of documents. https://docs.veryfi.com/api/receipts-invoices/search-documents/
  * Returns a json string list of documents.
  * @return the list of previously processed documents [String]
  */

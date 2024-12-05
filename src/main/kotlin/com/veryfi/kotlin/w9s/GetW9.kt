@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * Get a w9 document https://docs.veryfi.com/api/w9s/get-a-w-9/
  * Returns a json string [String] w9 information
  * @param documentId ID of the w9 you'd like to retrieve.
  * @return the data extracted from the W9 [String]
@@ -18,6 +19,7 @@ fun Client.getW9(documentId: String): String {
 }
 
 /**
+ * Get a w9 document https://docs.veryfi.com/api/w9s/get-a-w-9/
  * Returns a json string [String] w9 information
  * @param documentId ID of the w9 you'd like to retrieve.
  * @return the data extracted from the W9 [String]

@@ -6,7 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
- * Delete Document from Veryfi
+ * Delete document from Veryfi. https://docs.veryfi.com/api/receipts-invoices/delete-a-document/
  * @param documentId ID of the document you'd like to delete.
  * @return the response data. [String]
  */
@@ -18,7 +18,7 @@ fun Client.deleteDocument(documentId: String): String {
 }
 
 /**
- * Delete Document from Veryfi
+ * Delete document from Veryfi. https://docs.veryfi.com/api/receipts-invoices/delete-a-document/
  * @param documentId ID of the document you'd like to delete.
  * @return the response data.
  */

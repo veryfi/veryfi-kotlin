@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * Get all bank statements. https://docs.veryfi.com/api/bank-statements/get-bank-statements/
  * Returns a json string [String] with the list of bank statements.
  * @return the url [String]
  */
@@ -16,6 +17,7 @@ fun Client.getBankStatements(): String {
 }
 
 /**
+ * Get all bank statements. https://docs.veryfi.com/api/bank-statements/get-bank-statements/
  * Returns a json string list of bank statements.
  * @return the list of previously processed bank statements [String]
  */

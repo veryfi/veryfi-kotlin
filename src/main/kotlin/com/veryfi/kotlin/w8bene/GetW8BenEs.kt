@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * Get all W-8BEN-E. https://docs.veryfi.com/api/w-8ben-e/get-w-8-ben-es/
  * Returns a json string [String] with the list of w8BenEs.
  * @return the url [String]
  */
@@ -16,6 +17,7 @@ fun Client.getW8BenEs(): String {
 }
 
 /**
+ * Get all W-8BEN-E. https://docs.veryfi.com/api/w-8ben-e/get-w-8-ben-es/
  * Returns a json string list of w8BenEs.
  * @return the list of previously processed w8BenEs [String]
  */

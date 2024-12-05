@@ -20,7 +20,7 @@ private fun Client.getAddTagArguments(
 }
 
 /**
- * Adds a tag to an existing document
+ * Add a new tag on an existing document. https://docs.veryfi.com/api/receipts-invoices/add-a-tag-to-a-document/
  * @param name Name of tag
  * @return the added tag
  */
@@ -34,7 +34,7 @@ fun Client.addTag(
 }
 
 /**
- * Adds a tag to an existing document
+ * Add a new tag on an existing document. https://docs.veryfi.com/api/receipts-invoices/add-a-tag-to-a-document/
  * @param name Name of tag
  * @return the added tag
  */

@@ -34,7 +34,7 @@ private fun Client.getProcessW9UrlArguments(
 }
 
 /**
- * Process W9 from url and extract all the fields from it.
+ * Process a w9 document from an url. https://docs.veryfi.com/api/w9s/process-a-w-9/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters
@@ -54,7 +54,7 @@ fun Client.processW9Url(
 }
 
 /**
- * Process W9 from url and extract all the fields from it.
+ * Process a w9 document from an url. https://docs.veryfi.com/api/w9s/process-a-w-9/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters

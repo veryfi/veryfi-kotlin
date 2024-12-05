@@ -1,4 +1,4 @@
-package com.veryfi.kotlin.w2s
+package com.veryfi.kotlin.businessCards
 
 import com.veryfi.kotlin.Client
 import com.veryfi.kotlin.Constants.FILE_URL
@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture
  * @param parameters Additional request parameters
  * @return JSON object of the request arguments
  */
-private fun Client.getProcessW2UrlArguments(
+private fun Client.getProcessBusinessCardUrlArguments(
     fileUrl: String?, fileUrls: List<String?>?,
     parameters: JSONObject?
 ): JSONObject {
@@ -34,18 +34,18 @@ private fun Client.getProcessW2UrlArguments(
 }
 
 /**
- * Process a w2 document from an url. https://docs.veryfi.com/api/w2s/process-a-w-2/
+ * Process Check and extract all the fields from it. https://docs.veryfi.com/api/checks/process-a-check/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters
- * @return the data extracted from the W2
+ * @return the data extracted from the Business Card
  */
-fun Client.processW2Url(
+fun Client.processBusinessCardUrl(
     fileUrl: String?, fileUrls: List<String?>?,
     parameters: JSONObject?
 ): String {
-    val endpointName = "/w2s/"
-    val requestArguments = getProcessW2UrlArguments(
+    val endpointName = "/business-cards/"
+    val requestArguments = getProcessBusinessCardUrlArguments(
         fileUrl,
         fileUrls,
         parameters
@@ -54,18 +54,18 @@ fun Client.processW2Url(
 }
 
 /**
- * Process a w2 document from an url. https://docs.veryfi.com/api/w2s/process-a-w-2/
+ * Process Check and extract all the fields from it. https://docs.veryfi.com/api/checks/process-a-check/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters
- * @return the data extracted from the W2
+ * @return the data extracted from the Business Card
  */
-fun Client.processW2UrlAsync(
+fun Client.processBusinessCardUrlAsync(
     fileUrl: String?, fileUrls: List<String?>?,
     parameters: JSONObject?
 ): CompletableFuture<String> {
-    val endpointName = "/w2s/"
-    val requestArguments = getProcessW2UrlArguments(
+    val endpointName = "/business-cards/"
+    val requestArguments = getProcessBusinessCardUrlArguments(
         fileUrl,
         fileUrls,
         parameters

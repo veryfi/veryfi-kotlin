@@ -53,7 +53,7 @@ private fun Client.getProcessDocumentArguments(
 }
 
 /**
- * Process a document and extract all the fields from it
+ * Process a document and extract all the fields from it. https://docs.veryfi.com/api/receipts-invoices/process-a-document/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param categories List of categories Veryfi can use to categorize the document
  * @param deleteAfterProcessing Delete this document from Veryfi after data has been extracted
@@ -70,7 +70,7 @@ fun Client.processDocument(
 }
 
 /**
- * Process a document and extract all the fields from it
+ * Process a document and extract all the fields from it. https://docs.veryfi.com/api/receipts-invoices/process-a-document/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param categories List of categories Veryfi can use to categorize the document
  * @param deleteAfterProcessing Delete this document from Veryfi after data has been extracted

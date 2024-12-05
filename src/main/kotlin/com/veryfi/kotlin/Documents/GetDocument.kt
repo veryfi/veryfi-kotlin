@@ -6,6 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
+ * Retrieve document by ID. https://docs.veryfi.com/api/receipts-invoices/get-a-document/
  * Returns a json string [String] document information
  * @param documentId ID of the document you'd like to retrieve.
  * @return the data extracted from the Document [String]
@@ -18,6 +19,7 @@ fun Client.getDocument(documentId: String): String {
 }
 
 /**
+ * Retrieve document by ID. https://docs.veryfi.com/api/receipts-invoices/get-a-document/
  * Returns a json string document information.
  * @param documentId ID of the document you'd like to retrieve.
  * @return the data extracted from the Document [String]

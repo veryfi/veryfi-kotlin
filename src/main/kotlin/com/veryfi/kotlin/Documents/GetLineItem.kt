@@ -6,7 +6,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 /**
- * Gets a line item to an existing document
+ * Gets a line item to an existing document. https://docs.veryfi.com/api/receipts-invoices/get-a-line-item/
  * @param lineItemId Id of line item
  * @return the line item
  */
@@ -19,7 +19,7 @@ fun Client.getLineItem(
 }
 
 /**
- * Gets a line item to an existing document
+ * Gets a line item to an existing document. https://docs.veryfi.com/api/receipts-invoices/get-a-line-item/
  * @param lineItemId Id of line item
  * @return the line item
  */

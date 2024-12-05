@@ -27,7 +27,7 @@ private fun Client.getAddLineItemArguments(
 }
 
 /**
- * Adds a line item to an existing document
+ * Adds a line item to an existing document. https://docs.veryfi.com/api/receipts-invoices/create-a-line-item/
  * @param order Order of line item
  * @param description Description of line item
  * @param total Total of line item
@@ -44,7 +44,7 @@ fun Client.addLineItem(
 }
 
 /**
- * Adds a line item to an existing document
+ * Adds a line item to an existing document. https://docs.veryfi.com/api/receipts-invoices/create-a-line-item/
  * @param order Order of line item
  * @param description Description of line item
  * @param total Total of line item

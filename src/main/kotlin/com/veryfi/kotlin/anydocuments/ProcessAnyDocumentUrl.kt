@@ -37,7 +37,7 @@ private fun Client.getProcessAnyDocumentUrlArguments(
 }
 
 /**
- * Process Any Document from url and extract all the fields from it.
+ * Process any document and extract all the fields from it. https://docs.veryfi.com/api/anydocs/process-%E2%88%80-doc/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param templateName picks the blueprint that will process the any document
@@ -59,7 +59,7 @@ fun Client.processAnyDocumentUrl(
 }
 
 /**
- * Process Any Document from url and extract all the fields from it.
+ * Process any document and extract all the fields from it. https://docs.veryfi.com/api/anydocs/process-%E2%88%80-doc/
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
  * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param templateName picks the blueprint that will process the any document

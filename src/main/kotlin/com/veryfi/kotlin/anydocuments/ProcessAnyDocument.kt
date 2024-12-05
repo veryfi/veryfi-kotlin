@@ -45,7 +45,7 @@ private fun Client.getProcessAnyDocumentArguments(
 }
 
 /**
- * Process a any document and extract all the fields from it
+ * Process any document and extract all the fields from it. https://docs.veryfi.com/api/anydocs/process-%E2%88%80-doc/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param templateName picks the blueprint that will process the any document
  * @param parameters Additional request parameters
@@ -61,7 +61,7 @@ fun Client.processAnyDocument(
 }
 
 /**
- * Process a any document and extract all the fields from it
+ * Process any document and extract all the fields from it. https://docs.veryfi.com/api/anydocs/process-%E2%88%80-doc/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param templateName picks the blueprint that will process the any document
  * @param parameters Additional request parameters

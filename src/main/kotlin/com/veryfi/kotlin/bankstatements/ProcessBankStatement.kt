@@ -42,7 +42,7 @@ private fun Client.getProcessBankStatementArguments(
 }
 
 /**
- * Process a bank statement and extract all the fields from it
+ * Process bank statement and extract all the fields from it. https://docs.veryfi.com/api/bank-statements/process-a-bank-statement/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
  * @return the data extracted from the Bank Statement String]
@@ -57,7 +57,7 @@ fun Client.processBankStatement(
 }
 
 /**
- * Process a bank statement and extract all the fields from it
+ * Process bank statement and extract all the fields from it. https://docs.veryfi.com/api/bank-statements/process-a-bank-statement/
  * @param filePath Path on disk to a file to submit for data extraction
  * @param parameters Additional request parameters
  * @return the data extracted from the Bank Statement String]

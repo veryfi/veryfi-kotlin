@@ -20,7 +20,7 @@ private fun Client.getReplaceTagsArguments(
 }
 
 /**
- * Replaces tags to an existing document
+ * Replace multiple tags on an existing document. https://docs.veryfi.com/api/receipts-invoices/add-tags-to-a-document/
  * @param tags Tags ta be added
  * @return the document with replaced tags
  */
@@ -34,7 +34,7 @@ fun Client.replaceTags(
 }
 
 /**
- * Replaces tags to an existing document
+ * Replace multiple tags on an existing document. https://docs.veryfi.com/api/receipts-invoices/add-tags-to-a-document/
  * @param tags Tags ta be added
  * @return the document with replaced tags
  */

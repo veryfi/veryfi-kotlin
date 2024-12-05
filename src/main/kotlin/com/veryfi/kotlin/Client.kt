@@ -79,6 +79,12 @@ class Client(
         val request = getHttpRequest(httpVerb, endpointName, requestArguments, hasFiles)
         return try {
             val response = httpClient.send(request, HttpResponse.BodyHandlers.ofString())
+            if (response.headers() != null) {
+                val traceId = response.headers().firstValue("x-veryfi-trace-id")
+                if (traceId.isPresent) {
+                    logger.info("x-veryfi-trace-id: ${traceId.get()}")
+                }
+            }
             response.body()
         } catch (e: Exception) {
             logger.severe(e.message)

@@ -12,13 +12,16 @@ import com.veryfi.kotlin.Constants.X_VERYFI_REQUEST_TIMESTAMP
 import org.json.JSONObject
 import java.io.*
 import java.net.URI
+import java.net.URLEncoder
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
+import java.nio.charset.StandardCharsets
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.CompletableFuture
 import java.util.logging.Logger
+
 
 /**
  *  Veryfi API client for kotlin
@@ -121,8 +124,15 @@ class Client(
         hasFiles: Boolean
     ): HttpRequest {
         val request: HttpRequest
-        val apiUrl = "$url/partner$endpointName"
+        var apiUrl = "$url/partner$endpointName"
         val headers = getHeaders(hasFiles, requestArguments)
+
+        if (httpVerb == HttpMethod.GET && requestArguments != null) {
+            // Convert JSONObject to query string
+            val queryString = buildQueryString(requestArguments)
+            // Append query string to the URL
+            apiUrl = "$apiUrl?$queryString"
+        }
         request = when (httpVerb) {
             HttpMethod.DELETE -> HttpRequest.newBuilder()
                 .uri(URI.create(apiUrl))
@@ -186,6 +196,21 @@ class Client(
             headers.add(jsonHeaders.getString(key))
         }
         return headers
+    }
+
+    // Utility to build query string from JSONObject
+    private fun buildQueryString(jsonObject: JSONObject): String {
+        val queryString = StringBuilder()
+        for (key in jsonObject.keySet()) {
+            val value = jsonObject[key].toString()
+            if (queryString.length > 0) {
+                queryString.append("&")
+            }
+            queryString.append(URLEncoder.encode(key, StandardCharsets.UTF_8))
+            queryString.append("=")
+            queryString.append(URLEncoder.encode(value, StandardCharsets.UTF_8))
+        }
+        return queryString.toString()
     }
 
     /**

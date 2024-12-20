@@ -16,7 +16,7 @@ Gradle using Groovy:
 
 ```groovy
 dependencies {
-    implementation 'com.veryfi:veryfi-kotlin:1.0.8'
+    implementation 'com.veryfi:veryfi-kotlin:1.1.0'
 }
 ```
 
@@ -24,7 +24,7 @@ Gradle using Koltin:
 
 ```groovy
 dependencies {
-    implementation("com.veryfi:veryfi-kotlin:1.0.8")
+    implementation("com.veryfi:veryfi-kotlin:1.1.0")
 }
 ```
 

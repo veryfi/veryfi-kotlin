@@ -10,20 +10,16 @@ import java.util.concurrent.CompletableFuture
 /**
  * Creates the JSON object of the parameters of the request
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
- * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters
  * @return JSON object of the request arguments
  */
 private fun Client.getProcessContractUrlArguments(
-    fileUrl: String?, fileUrls: List<String?>?,
+    fileUrl: String?,
     parameters: JSONObject?
 ): JSONObject {
     val requestArguments = JSONObject()
     if (fileUrl != null) {
         requestArguments.put(FILE_URL, fileUrl)
-    }
-    if (fileUrls != null) {
-        requestArguments.put(FILE_URLS, fileUrls)
     }
     if (parameters != null && !parameters.isEmpty) {
         for (key in JSONObject.getNames(parameters)) {
@@ -36,18 +32,16 @@ private fun Client.getProcessContractUrlArguments(
 /**
  * Process a Contract document from an url.
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
- * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters
  * @return the data extracted from theContract
  */
 fun Client.processContractUrl(
-    fileUrl: String?, fileUrls: List<String?>?,
+    fileUrl: String?,
     parameters: JSONObject?
 ): String {
     val endpointName = "/contracts/"
     val requestArguments = getProcessContractUrlArguments(
         fileUrl,
-        fileUrls,
         parameters
     )
     return request(HttpMethod.POST, endpointName, requestArguments)
@@ -56,18 +50,16 @@ fun Client.processContractUrl(
 /**
  * Process a Contract document from an url.
  * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
- * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
  * @param parameters Additional request parameters
  * @return the data extracted from the Contract
  */
 fun Client.processContractUrlAsync(
-    fileUrl: String?, fileUrls: List<String?>?,
+    fileUrl: String?,
     parameters: JSONObject?
 ): CompletableFuture<String> {
     val endpointName = "/contracts/"
     val requestArguments = getProcessContractUrlArguments(
         fileUrl,
-        fileUrls,
         parameters
     )
     return requestAsync(HttpMethod.POST, endpointName, requestArguments)

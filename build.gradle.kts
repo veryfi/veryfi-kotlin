@@ -16,7 +16,7 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			groupId = "com.veryfi"
 			artifactId = "veryfi-kotlin"
-			version = "1.0.8"
+			version = "1.1.0"
 			from(components["java"])
 			pom {
 				name.set("Veyfi Kotlin")

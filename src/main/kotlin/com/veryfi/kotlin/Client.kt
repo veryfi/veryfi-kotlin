@@ -109,7 +109,17 @@ class Client(
     ): CompletableFuture<String> {
         val request = getHttpRequest(httpVerb, endpointName, requestArguments, false)
         return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-            .thenApply { obj: HttpResponse<String> -> obj.body() }
+            .thenApply { obj: HttpResponse<String> ->
+                var traceId: String? = null
+                if (obj.headers() != null) {
+                    val traceIdHeader = obj.headers().firstValue("x-veryfi-trace-id")
+                    if (traceIdHeader.isPresent) {
+                        traceId = traceIdHeader.get()
+                        logger.info("x-veryfi-trace-id: $traceId")
+                    }
+                }
+                addTraceIdToResponse(obj.body(), traceId)
+            }
     }
 
     /**

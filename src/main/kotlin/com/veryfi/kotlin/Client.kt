@@ -86,6 +86,7 @@ class Client(
                 val traceId = response.headers().firstValue("x-veryfi-trace-id")
                 if (traceId.isPresent) {
                     logger.info("x-veryfi-trace-id: ${traceId.get()}")
+                    return addTraceIdToResponse(response.body(), traceId.get())
                 }
             }
             response.body()
@@ -231,5 +232,25 @@ class Client(
 
     fun setHttpClient(httpClient: HttpClient) {
         this.httpClient = httpClient
+    }
+
+    /**
+     * Sets a custom HttpClient to be used for API requests.
+     * @param httpClient The HttpClient instance to use for HTTP requests.
+     */
+    private fun addTraceIdToResponse(responseBody: String, traceId: String?): String {
+        return try {
+            if (traceId != null && responseBody.isNotEmpty()) {
+                val jsonResponse = JSONObject(responseBody)
+                jsonResponse.put("x_veryfi_trace_id", traceId)
+                jsonResponse.toString()
+            } else {
+                responseBody
+            }
+        } catch (e: Exception) {
+            // If response is not valid JSON, return as-is
+            logger.warning("Could not parse response as JSON, returning original response")
+            responseBody
+        }
     }
 }

@@ -39,6 +39,7 @@ class Client(
     private var baseUrl = "https://api.veryfi.com/api/"
     private var timeOut = 120
     private var httpClient: HttpClient
+    private var lastTraceId: String? = null
 
     /**
      * Creates an instance of [ClientImpl].
@@ -86,6 +87,7 @@ class Client(
                 val traceId = response.headers().firstValue("x-veryfi-trace-id")
                 if (traceId.isPresent) {
                     logger.info("x-veryfi-trace-id: ${traceId.get()}")
+                    lastTraceId = traceId.get()
                 }
             }
             response.body()
@@ -229,7 +231,20 @@ class Client(
         this.baseUrl = baseUrl
     }
 
+    /**
+     * Sets a custom HttpClient to be used for API requests.
+     * @param httpClient The HttpClient instance to use for HTTP requests.
+     */
     fun setHttpClient(httpClient: HttpClient) {
         this.httpClient = httpClient
+    }
+
+    /**
+     * Retrieves the trace ID from the most recent API response headers.
+     * Useful for debugging and tracking requests.
+     * @return The Veryfi trace ID associated with the last API request, or null if unavailable.
+     */
+    fun getLastTraceId(): String? {
+        return lastTraceId
     }
 }

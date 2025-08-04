@@ -5,6 +5,10 @@ import com.veryfi.kotlin.Constants.APPLICATION_JSON
 import com.veryfi.kotlin.Constants.AUTHORIZATION
 import com.veryfi.kotlin.Constants.CLIENT_ID
 import com.veryfi.kotlin.Constants.CONTENT_TYPE
+import com.veryfi.kotlin.Constants.FILE_DATA
+import com.veryfi.kotlin.Constants.FILE_NAME
+import com.veryfi.kotlin.Constants.FILE_URL
+import com.veryfi.kotlin.Constants.FILE_URLS
 import com.veryfi.kotlin.Constants.FORM_URL_ENCODED
 import com.veryfi.kotlin.Constants.USER_AGENT
 import com.veryfi.kotlin.Constants.USER_AGENT_KOTLIN
@@ -263,4 +267,63 @@ class Client(
             responseBody
         }
     }
+
+    /**
+     * Creates the JSON Object for the parameters of the request
+     * @param filePath Path on disk to a file to submit for data extraction
+     * @param parameters Additional request parameters
+     * @return the JSON object of the parameters of the request
+     */
+    fun getArguments(
+        filePath: String,
+        parameters: JSONObject?
+    ): JSONObject {
+        val fileName = filePath.replace("^.*[/\\\\]".toRegex(), "")
+        val file = File(filePath)
+        var base64EncodedString: String? = ""
+        try {
+            if (file.exists() && file.canRead()) {
+                base64EncodedString = Base64.getEncoder().encodeToString(file.readBytes())
+            }
+        } catch (e: IOException) {
+            logger.severe(e.message)
+        }
+        val requestArguments = JSONObject()
+        requestArguments.put(FILE_NAME, fileName)
+        requestArguments.put(FILE_DATA, base64EncodedString)
+        if (parameters != null && !parameters.isEmpty) {
+            for (key in JSONObject.getNames(parameters)) {
+                requestArguments.put(key, parameters[key])
+            }
+        }
+        return requestArguments
+    }
+
+    /**
+     * Creates the JSON object of the parameters of the request
+     * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
+     * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
+     * @param parameters Additional request parameters
+     * @return JSON object of the request arguments
+     */
+    fun getArguments(
+        fileUrl: String?,
+        fileUrls: List<String?>?,
+        parameters: JSONObject?
+    ): JSONObject {
+        val requestArguments = JSONObject()
+        if (fileUrl != null) {
+            requestArguments.put(FILE_URL, fileUrl)
+        }
+        if (fileUrls != null) {
+            requestArguments.put(FILE_URLS, fileUrls)
+        }
+        if (parameters != null && !parameters.isEmpty) {
+            for (key in JSONObject.getNames(parameters)) {
+                requestArguments.put(key, parameters[key])
+            }
+        }
+        return requestArguments
+    }
+
 }

@@ -24,7 +24,7 @@ publishing {
         create<MavenPublication>("mavenJava") {
             groupId = "com.veryfi"
             artifactId = "veryfi-kotlin"
-            version = "2.0.2"
+            version = "2.0.3"
             from(components["java"])
             pom {
                 name.set("Veyfi Kotlin")
@@ -66,7 +66,7 @@ jreleaser {
     }
     project {
         name = "Veyfi Kotlin"
-        version = "2.0.2"
+        version = "2.0.3"
         description = "Android kotlin module for communicating with the Veryfi OCR API"
         copyright = "Veryfi"
         java {

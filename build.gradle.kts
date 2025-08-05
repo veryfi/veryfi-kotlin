@@ -132,3 +132,12 @@ tasks.test {
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
 }
+
+// Workaround for: https://github.com/Kotlin/dokka/issues/3472
+configurations.matching { it.name.startsWith("dokka") }.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.group.startsWith("com.fasterxml.jackson")) {
+            useVersion("2.15.3")
+        }
+    }
+}

@@ -1,6 +1,8 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.veryfi.kotlin.anydocuments////PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/index.html
+$dokka.location:com.veryfi.kotlin.anydocuments//deleteAnyDocument/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/delete-any-document.html
+$dokka.location:com.veryfi.kotlin.anydocuments//deleteAnyDocumentAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/delete-any-document-async.html
 $dokka.location:com.veryfi.kotlin.anydocuments//getAnyDocument/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/get-any-document.html
 $dokka.location:com.veryfi.kotlin.anydocuments//getAnyDocumentAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/get-any-document-async.html
 $dokka.location:com.veryfi.kotlin.anydocuments//getAnyDocuments/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/get-any-documents.html
@@ -10,6 +12,8 @@ $dokka.location:com.veryfi.kotlin.anydocuments//processAnyDocumentAsync/com.very
 $dokka.location:com.veryfi.kotlin.anydocuments//processAnyDocumentUrl/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/process-any-document-url.html
 $dokka.location:com.veryfi.kotlin.anydocuments//processAnyDocumentUrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.anydocuments/process-any-document-url-async.html
 $dokka.location:com.veryfi.kotlin.bankstatements////PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/index.html
+$dokka.location:com.veryfi.kotlin.bankstatements//deleteBankStatement/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/delete-bank-statement.html
+$dokka.location:com.veryfi.kotlin.bankstatements//deleteBankStatementAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/delete-bank-statement-async.html
 $dokka.location:com.veryfi.kotlin.bankstatements//getBankStatement/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/get-bank-statement.html
 $dokka.location:com.veryfi.kotlin.bankstatements//getBankStatementAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/get-bank-statement-async.html
 $dokka.location:com.veryfi.kotlin.bankstatements//getBankStatements/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/get-bank-statements.html
@@ -19,6 +23,8 @@ $dokka.location:com.veryfi.kotlin.bankstatements//processBankStatementAsync/com.
 $dokka.location:com.veryfi.kotlin.bankstatements//processBankStatementUrl/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/process-bank-statement-url.html
 $dokka.location:com.veryfi.kotlin.bankstatements//processBankStatementUrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.bankstatements/process-bank-statement-url-async.html
 $dokka.location:com.veryfi.kotlin.businessCards////PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/index.html
+$dokka.location:com.veryfi.kotlin.businessCards//deleteBusinessCard/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/delete-business-card.html
+$dokka.location:com.veryfi.kotlin.businessCards//deleteBusinessCardAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/delete-business-card-async.html
 $dokka.location:com.veryfi.kotlin.businessCards//getBusinessCard/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/get-business-card.html
 $dokka.location:com.veryfi.kotlin.businessCards//getBusinessCardAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/get-business-card-async.html
 $dokka.location:com.veryfi.kotlin.businessCards//getBusinessCards/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/get-business-cards.html
@@ -27,12 +33,25 @@ $dokka.location:com.veryfi.kotlin.businessCards//processBusinessCard/com.veryfi.
 $dokka.location:com.veryfi.kotlin.businessCards//processBusinessCardAsync/com.veryfi.kotlin.Client#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/process-business-card-async.html
 $dokka.location:com.veryfi.kotlin.businessCards//processBusinessCardUrl/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/process-business-card-url.html
 $dokka.location:com.veryfi.kotlin.businessCards//processBusinessCardUrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.businessCards/process-business-card-url-async.html
+$dokka.location:com.veryfi.kotlin.checks////PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/index.html
+$dokka.location:com.veryfi.kotlin.checks//deleteCheck/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/delete-check.html
+$dokka.location:com.veryfi.kotlin.checks//deleteCheckAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/delete-check-async.html
+$dokka.location:com.veryfi.kotlin.checks//getCheck/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/get-check.html
+$dokka.location:com.veryfi.kotlin.checks//getCheckAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/get-check-async.html
+$dokka.location:com.veryfi.kotlin.checks//getChecks/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/get-checks.html
+$dokka.location:com.veryfi.kotlin.checks//getChecksAsync/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/get-checks-async.html
+$dokka.location:com.veryfi.kotlin.checks//processCheck/com.veryfi.kotlin.Client#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/process-check.html
+$dokka.location:com.veryfi.kotlin.checks//processCheckAsync/com.veryfi.kotlin.Client#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/process-check-async.html
+$dokka.location:com.veryfi.kotlin.checks//processCheckUrl/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/process-check-url.html
+$dokka.location:com.veryfi.kotlin.checks//processCheckUrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.checks/process-check-url-async.html
 $dokka.location:com.veryfi.kotlin.classify////PointingToDeclaration/kotlin/com.veryfi.kotlin.classify/index.html
 $dokka.location:com.veryfi.kotlin.classify//classifyDocument/com.veryfi.kotlin.Client#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.classify/classify-document.html
 $dokka.location:com.veryfi.kotlin.classify//classifyDocumentAsync/com.veryfi.kotlin.Client#kotlin.String#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.classify/classify-document-async.html
 $dokka.location:com.veryfi.kotlin.classify//classifyDocumentUrl/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.classify/classify-document-url.html
 $dokka.location:com.veryfi.kotlin.classify//classifyDocumentUrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.classify/classify-document-url-async.html
 $dokka.location:com.veryfi.kotlin.contracts////PointingToDeclaration/kotlin/com.veryfi.kotlin.contracts/index.html
+$dokka.location:com.veryfi.kotlin.contracts//deleteContract/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.contracts/delete-contract.html
+$dokka.location:com.veryfi.kotlin.contracts//deleteContractAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.contracts/delete-contract-async.html
 $dokka.location:com.veryfi.kotlin.contracts//getContract/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.contracts/get-contract.html
 $dokka.location:com.veryfi.kotlin.contracts//getContractAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.contracts/get-contract-async.html
 $dokka.location:com.veryfi.kotlin.contracts//getContracts/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.contracts/get-contracts.html
@@ -80,6 +99,8 @@ $dokka.location:com.veryfi.kotlin.split//splitDocumentAsync/com.veryfi.kotlin.Cl
 $dokka.location:com.veryfi.kotlin.split//splitDocumentUrl/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.split/split-document-url.html
 $dokka.location:com.veryfi.kotlin.split//splitDocumentUrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.split/split-document-url-async.html
 $dokka.location:com.veryfi.kotlin.w2s////PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/index.html
+$dokka.location:com.veryfi.kotlin.w2s//deleteW2/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/delete-w2.html
+$dokka.location:com.veryfi.kotlin.w2s//deleteW2Async/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/delete-w2-async.html
 $dokka.location:com.veryfi.kotlin.w2s//getW2/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/get-w2.html
 $dokka.location:com.veryfi.kotlin.w2s//getW2Async/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/get-w2-async.html
 $dokka.location:com.veryfi.kotlin.w2s//getW2s/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/get-w2s.html
@@ -89,6 +110,8 @@ $dokka.location:com.veryfi.kotlin.w2s//processW2Async/com.veryfi.kotlin.Client#k
 $dokka.location:com.veryfi.kotlin.w2s//processW2Url/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/process-w2-url.html
 $dokka.location:com.veryfi.kotlin.w2s//processW2UrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.w2s/process-w2-url-async.html
 $dokka.location:com.veryfi.kotlin.w8bene////PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/index.html
+$dokka.location:com.veryfi.kotlin.w8bene//deleteW8BenE/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/delete-w8-ben-e.html
+$dokka.location:com.veryfi.kotlin.w8bene//deleteW8BenEAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/delete-w8-ben-e-async.html
 $dokka.location:com.veryfi.kotlin.w8bene//getW8BenE/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/get-w8-ben-e.html
 $dokka.location:com.veryfi.kotlin.w8bene//getW8BenEAsync/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/get-w8-ben-e-async.html
 $dokka.location:com.veryfi.kotlin.w8bene//getW8BenEs/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/get-w8-ben-es.html
@@ -98,6 +121,8 @@ $dokka.location:com.veryfi.kotlin.w8bene//processW8BenEAsync/com.veryfi.kotlin.C
 $dokka.location:com.veryfi.kotlin.w8bene//processW8BenEUrl/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/process-w8-ben-e-url.html
 $dokka.location:com.veryfi.kotlin.w8bene//processW8BenEUrlAsync/com.veryfi.kotlin.Client#kotlin.String?#kotlin.collections.List[kotlin.String?]?#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.w8bene/process-w8-ben-e-url-async.html
 $dokka.location:com.veryfi.kotlin.w9s////PointingToDeclaration/kotlin/com.veryfi.kotlin.w9s/index.html
+$dokka.location:com.veryfi.kotlin.w9s//deleteW9/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w9s/delete-w9.html
+$dokka.location:com.veryfi.kotlin.w9s//deleteW9Async/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w9s/delete-w9-async.html
 $dokka.location:com.veryfi.kotlin.w9s//getW9/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w9s/get-w9.html
 $dokka.location:com.veryfi.kotlin.w9s//getW9Async/com.veryfi.kotlin.Client#kotlin.String/PointingToDeclaration/kotlin/com.veryfi.kotlin.w9s/get-w9-async.html
 $dokka.location:com.veryfi.kotlin.w9s//getW9s/com.veryfi.kotlin.Client#org.json.JSONObject?/PointingToDeclaration/kotlin/com.veryfi.kotlin.w9s/get-w9s.html
@@ -159,6 +184,7 @@ com.veryfi.kotlin
 com.veryfi.kotlin.anydocuments
 com.veryfi.kotlin.bankstatements
 com.veryfi.kotlin.businessCards
+com.veryfi.kotlin.checks
 com.veryfi.kotlin.classify
 com.veryfi.kotlin.contracts
 com.veryfi.kotlin.documents

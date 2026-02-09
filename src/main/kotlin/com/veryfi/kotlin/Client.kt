@@ -96,7 +96,14 @@ class Client(
             response.body()
         } catch (e: Exception) {
             logger.severe(e.message)
-            ""
+            val message = e.message ?: "Unknown error"
+            JSONObject().apply {
+                put("details", org.json.JSONArray().apply {
+                    put(JSONObject().apply { put("reason", e.toString()) })
+                })
+                put("error", message)
+                put("status", "fail")
+            }.toString()
         }
     }
 

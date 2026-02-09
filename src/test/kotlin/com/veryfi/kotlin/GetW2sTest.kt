@@ -49,7 +49,7 @@ class GetW2sTest: ClientTest() {
             )
         ).thenThrow(InterruptedException())
         val jsonResponse = client.getW2s()
-        Assertions.assertEquals("", jsonResponse)
+        Assertions.assertEquals(interruptedExceptionJsonResponse, jsonResponse)
     }
 
     @Test

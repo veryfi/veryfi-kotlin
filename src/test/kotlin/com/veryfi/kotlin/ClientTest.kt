@@ -10,4 +10,5 @@ class ClientTest {
     private var apiKey = "your_apikey"
     var client = createClient(clientId, username, apiKey) as Client
     var mockResponses = true // Change to “false” if you want to test your personal credential
+    val interruptedExceptionJsonResponse = "{\"details\":[{\"reason\":\"java.lang.InterruptedException\"}],\"error\":\"Unknown error\",\"status\":\"fail\"}"
 }

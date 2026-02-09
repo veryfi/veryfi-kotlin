@@ -49,7 +49,7 @@ class GetDocumentsTest: ClientTest() {
             )
         ).thenThrow(InterruptedException())
         val jsonResponse = client.getDocuments()
-        Assertions.assertEquals("", jsonResponse)
+        Assertions.assertEquals(interruptedExceptionJsonResponse, jsonResponse)
     }
 
     @Test

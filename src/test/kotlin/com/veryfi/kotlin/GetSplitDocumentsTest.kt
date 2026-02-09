@@ -50,7 +50,7 @@ class GetSplitDocumentsTest: ClientTest() {
             )
         ).thenThrow(InterruptedException())
         val jsonResponse = client.getSplitDocuments(1)
-        Assertions.assertEquals("", jsonResponse)
+        Assertions.assertEquals(interruptedExceptionJsonResponse, jsonResponse)
     }
 
     @Test

@@ -50,7 +50,7 @@ class GetChecksTest: ClientTest() {
             )
         ).thenThrow(InterruptedException())
         val jsonResponse = client.getChecks()
-        Assertions.assertEquals("", jsonResponse)
+        Assertions.assertEquals(interruptedExceptionJsonResponse, jsonResponse)
     }
 
     @Test

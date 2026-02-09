@@ -50,7 +50,7 @@ class GetBankStatementsTest: ClientTest() {
             )
         ).thenThrow(InterruptedException())
         val jsonResponse = client.getBankStatements()
-        Assertions.assertEquals("", jsonResponse)
+        Assertions.assertEquals(interruptedExceptionJsonResponse, jsonResponse)
     }
 
     @Test

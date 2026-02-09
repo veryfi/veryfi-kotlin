@@ -49,7 +49,7 @@ class GetBusinessCardsTest: ClientTest() {
             )
         ).thenThrow(InterruptedException())
         val jsonResponse = client.getBusinessCards()
-        Assertions.assertEquals("", jsonResponse)
+        Assertions.assertEquals(interruptedExceptionJsonResponse, jsonResponse)
     }
 
     @Test

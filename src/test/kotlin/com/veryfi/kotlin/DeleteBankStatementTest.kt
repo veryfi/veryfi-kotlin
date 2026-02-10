@@ -2,6 +2,7 @@ package com.veryfi.kotlin;
 
 import com.veryfi.kotlin.bankstatements.deleteBankStatement
 import com.veryfi.kotlin.bankstatements.deleteBankStatementAsync
+import org.json.JSONObject
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers.any
@@ -30,10 +31,11 @@ class DeleteBankStatementTest : ClientTest() {
             val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
             `when`(httpClient.send(any(HttpRequest::class.java), any<BodyHandler<String>>())).thenReturn(httpResponse)
             `when`(httpResponse.statusCode()).thenReturn(200)
-            `when`(httpResponse.body()).thenReturn("")
+            `when`(httpResponse.body()).thenReturn("{\"status\": \"ok\", \"message\": \"Document has been deleted\"}")
         }
         val jsonResponse = client.deleteBankStatement(documentId)
-        Assertions.assertTrue(jsonResponse.isEmpty())
+        val document = JSONObject(jsonResponse)
+        Assertions.assertEquals("ok", document.getString("status"))
     }
 
     @Test
@@ -49,11 +51,12 @@ class DeleteBankStatementTest : ClientTest() {
                 jsonResponseFuture
             )
             `when`(httpResponse.statusCode()).thenReturn(200)
-            `when`(httpResponse.body()).thenReturn("")
+            `when`(httpResponse.body()).thenReturn("{\"status\": \"ok\", \"message\": \"Document has been deleted\"}")
         }
         val jsonResponseFuture = client.deleteBankStatementAsync(documentId)
         val jsonResponse = jsonResponseFuture.get()
-        Assertions.assertTrue(jsonResponse.isEmpty())
+        val document = JSONObject(jsonResponse)
+        Assertions.assertEquals("ok", document.getString("status"))
     }
 
 } 

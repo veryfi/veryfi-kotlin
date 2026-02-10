@@ -86,14 +86,18 @@ class Client(
         val request = getHttpRequest(httpVerb, endpointName, requestArguments, hasFiles)
         return try {
             val response = httpClient.send(request, HttpResponse.BodyHandlers.ofString())
+            val body = response.body()
+            if (!isValidJson(body)) {
+                return buildInvalidResponseErrorJson(response.statusCode(), body)
+            }
             if (response.headers() != null) {
                 val traceId = response.headers().firstValue("x-veryfi-trace-id")
                 if (traceId.isPresent) {
                     logger.info("x-veryfi-trace-id: ${traceId.get()}")
-                    return addTraceIdToResponse(response.body(), traceId.get())
+                    return addTraceIdToResponse(body, traceId.get())
                 }
             }
-            response.body()
+            body
         } catch (e: Exception) {
             logger.severe(e.message)
             val message = e.message ?: "Unknown error"
@@ -121,6 +125,10 @@ class Client(
         val request = getHttpRequest(httpVerb, endpointName, requestArguments, false)
         return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
             .thenApply { obj: HttpResponse<String> ->
+                val body = obj.body()
+                if (!isValidJson(body)) {
+                    return@thenApply buildInvalidResponseErrorJson(obj.statusCode(), body)
+                }
                 var traceId: String? = null
                 if (obj.headers() != null) {
                     val traceIdHeader = obj.headers().firstValue("x-veryfi-trace-id")
@@ -129,7 +137,7 @@ class Client(
                         logger.info("x-veryfi-trace-id: $traceId")
                     }
                 }
-                addTraceIdToResponse(obj.body(), traceId)
+                addTraceIdToResponse(body, traceId)
             }
     }
 
@@ -253,6 +261,34 @@ class Client(
 
     fun setHttpClient(httpClient: HttpClient) {
         this.httpClient = httpClient
+    }
+
+    /**
+     * Returns true if the string is valid JSON object.
+     */
+    private fun isValidJson(s: String): Boolean {
+        if (s.isBlank()) return false
+        return try {
+            JSONObject(s)
+            true
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    /**
+     * Builds a JSON error response for invalid (non-JSON) HTTP response body.
+     * @param statusCode HTTP status code
+     * @param rawResponse Raw response body
+     */
+    private fun buildInvalidResponseErrorJson(statusCode: Int, rawResponse: String): String {
+        return JSONObject().apply {
+            put("details", org.json.JSONArray().apply {
+                put(JSONObject().apply { put("response", rawResponse) })
+            })
+            put("error", "Status code $statusCode")
+            put("status", "fail")
+        }.toString()
     }
 
     /**

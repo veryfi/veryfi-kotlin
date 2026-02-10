@@ -17,7 +17,7 @@ object Constants {
     /**
      * header for HttpRequest
      */
-    const val USER_AGENT_KOTLIN = "Kotlin Veryfi-Kotlin/2.0.5"
+    const val USER_AGENT_KOTLIN = "Kotlin Veryfi-Kotlin/2.0.6"
 
     /**
      * header for HttpRequest

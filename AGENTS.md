@@ -1,4 +1,8 @@
-# Veryfi Node.js SDK Agent Instructions
+# Veryfi SDK Agent Instructions
+
+These instructions apply to any Veryfi SDK regardless of implementation
+language (Kotlin, Java, PHP, Node.js, Python, C#, etc.). Apply the rules using
+the conventions, tooling, and idioms of the SDK's language.
 
 ## Source of truth
 
@@ -38,7 +42,10 @@ Before implementing or changing an API method:
 - Do not introduce another HTTP library.
 - Add tests for every new endpoint.
 - Add tests for newly supported parameters.
-- Update JSDoc / TypeScript definitions where applicable.
+- Update the language's inline API documentation and type definitions/signatures
+  where applicable (for example KDoc for Kotlin, Javadoc for Java, PHPDoc for
+  PHP, JSDoc / TypeScript definitions for Node.js, docstrings/type hints for
+  Python).
 - Update README examples for newly exposed functionality.
 
 ## API coverage analysis

@@ -1,0 +1,4 @@
+{
+  "name": "veryfi-kotlin",
+  "install": "./gradlew assemble testClasses --no-daemon"
+}

@@ -53,6 +53,13 @@ object Main {
 }
 ``` 
 
+Run thinking on the line items by passing `thinking` (`"light"` or `"deep"`) in the extra parameters; leave it out to turn it off. `processDocument`, `processDocumentUrl` and their `Async` versions accept it, and `"deep"` takes longer than `"light"`. It only takes effect if thinking mode is enabled for your account.
+```kotlin
+val parameters = JSONObject()
+parameters.put("thinking", "light")
+val jsonResponse = client.processDocument("example1.jpg", categories, false, parameters)
+```
+
 Update a document
 ```java
 object Main {

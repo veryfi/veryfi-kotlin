@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture
  * @param maxPagesToProcess When sending a long document to Veryfi for processing, this parameter controls how many pages of the document will be read and processed, starting from page 1.
  * @param boostMode Flag that tells Veryfi whether boost mode should be enabled. When set to 1, Veryfi will skip data enrichment steps, but will process the document faster. Default value for this flag is 0
  * @param externalId Optional custom document identifier. Use this if you would like to assign your own ID to documents
- * @param parameters Additional request parameters
+ * @param parameters Additional request parameters. Set `thinking` to `"light"` or `"deep"` (slower) for an extra LLM pass on the line items; omit it to turn it off. Needs thinking mode enabled for your account.
  * @return JSON object of the request arguments
  */
 private fun Client.getProcessDocumentUrlArguments(
@@ -61,7 +61,7 @@ private fun Client.getProcessDocumentUrlArguments(
  * @param maxPagesToProcess When sending a long document to Veryfi for processing, this parameter controls how many pages of the document will be read and processed, starting from page 1.
  * @param boostMode Flag that tells Veryfi whether boost mode should be enabled. When set to 1, Veryfi will skip data enrichment steps, but will process the document faster. Default value for this flag is 0
  * @param externalId Optional custom document identifier. Use this if you would like to assign your own ID to documents
- * @param parameters Additional request parameters
+ * @param parameters Additional request parameters. Set `thinking` to `"light"` or `"deep"` (slower) for an extra LLM pass on the line items; omit it to turn it off. Needs thinking mode enabled for your account.
  * @return the data extracted from the Document [String]
  */
 fun Client.processDocumentUrl(
@@ -92,7 +92,7 @@ fun Client.processDocumentUrl(
  * @param maxPagesToProcess When sending a long document to Veryfi for processing, this parameter controls how many pages of the document will be read and processed, starting from page 1.
  * @param boostMode Flag that tells Veryfi whether boost mode should be enabled. When set to 1, Veryfi will skip data enrichment steps, but will process the document faster. Default value for this flag is 0
  * @param externalId Optional custom document identifier. Use this if you would like to assign your own ID to documents
- * @param parameters Additional request parameters
+ * @param parameters Additional request parameters. Set `thinking` to `"light"` or `"deep"` (slower) for an extra LLM pass on the line items; omit it to turn it off. Needs thinking mode enabled for your account.
  * @return the data extracted from the Document
  */
 fun Client.processDocumentUrlAsync(

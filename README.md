@@ -53,11 +53,23 @@ object Main {
 }
 ``` 
 
-Run thinking on the line items by passing `thinking` (`"light"` or `"deep"`) in the extra parameters; leave it out to turn it off. `processDocument`, `processDocumentUrl` and their `Async` versions accept it, and `"deep"` takes longer than `"light"`. It only takes effect if thinking mode is enabled for your account.
+### Thinking Mode
+
+[Thinking Mode](https://docs.veryfi.com/api/receipts-invoices/process-a-document/) is Veryfi's agentic data extraction: AI agents review and correct receipt and invoice extraction before the response is returned. Pass `"light"` or `"deep"`, and leave it off to use the standard real-time pipeline (`"deep"` takes longer than `"light"`). `processDocument`, `processDocumentUrl` and their `Async` versions accept it. It currently supports receipts and invoices and must be enabled on your account.
+
+You can pass it either as the dedicated `thinking` argument or through the extra `parameters`:
+
 ```kotlin
+val client = createClient(clientId, clientSecret, username, apiKey)
+val categories = listOf("Advertising & Marketing", "Automotive")
+
+// Dedicated argument:
+val jsonResponse = client.processDocument("example1.jpg", categories, false, "light", null)
+
+// Or through the extra parameters:
 val parameters = JSONObject()
-parameters.put("thinking", "light")
-val jsonResponse = client.processDocument("example1.jpg", categories, false, parameters)
+parameters.put("thinking", "deep")
+val jsonResponse2 = client.processDocument("example1.jpg", categories, false, parameters)
 ```
 
 Update a document

@@ -9,6 +9,7 @@ import com.veryfi.kotlin.Constants.FILE_URL
 import com.veryfi.kotlin.Constants.FILE_URLS
 import com.veryfi.kotlin.Constants.LIST_CATEGORIES
 import com.veryfi.kotlin.Constants.MAX_PAGES_TO_PROCESS
+import com.veryfi.kotlin.Constants.THINKING
 import com.veryfi.kotlin.HttpMethod
 import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
@@ -22,13 +23,14 @@ import java.util.concurrent.CompletableFuture
  * @param maxPagesToProcess When sending a long document to Veryfi for processing, this parameter controls how many pages of the document will be read and processed, starting from page 1.
  * @param boostMode Flag that tells Veryfi whether boost mode should be enabled. When set to 1, Veryfi will skip data enrichment steps, but will process the document faster. Default value for this flag is 0
  * @param externalId Optional custom document identifier. Use this if you would like to assign your own ID to documents
- * @param parameters Additional request parameters. Set `thinking` to `"light"` or `"deep"` (slower) for an extra LLM pass on the line items; omit it to turn it off. Needs thinking mode enabled for your account.
+ * @param thinking Enables Veryfi Thinking Mode (agentic data extraction). Accepted values are "light" and "deep"; pass null to use the standard real-time pipeline. Must be enabled on your account.
+ * @param parameters Additional request parameters. You may also set `thinking` here (`"light"` or `"deep"`) instead of using the dedicated argument; omit it to turn it off.
  * @return JSON object of the request arguments
  */
 private fun Client.getProcessDocumentUrlArguments(
     fileUrl: String, fileUrls: List<String?>?, categories: List<String?>?,
     deleteAfterProcessing: Boolean, maxPagesToProcess: Int,
-    boostMode: Boolean, externalId: String?, parameters: JSONObject?
+    boostMode: Boolean, externalId: String?, thinking: String?, parameters: JSONObject?
 ): JSONObject {
     var categoriesLocal = categories
     if (categoriesLocal == null || categoriesLocal.isEmpty()) {
@@ -44,6 +46,9 @@ private fun Client.getProcessDocumentUrlArguments(
         requestArguments.put(FILE_URLS, fileUrls)
     }
     requestArguments.put(MAX_PAGES_TO_PROCESS, maxPagesToProcess)
+    if (thinking != null) {
+        requestArguments.put(THINKING, thinking)
+    }
     if (parameters != null && !parameters.isEmpty) {
         for (key in JSONObject.getNames(parameters)) {
             requestArguments.put(key, parameters[key])
@@ -69,6 +74,30 @@ fun Client.processDocumentUrl(
     deleteAfterProcessing: Boolean, maxPagesToProcess: Int,
     boostMode: Boolean, externalId: String?, parameters: JSONObject?
 ): String {
+    return processDocumentUrl(
+        fileUrl, fileUrls, categories, deleteAfterProcessing,
+        maxPagesToProcess, boostMode, externalId, null, parameters
+    )
+}
+
+/**
+ * Process document from url and extract all the fields from it. https://docs.veryfi.com/api/receipts-invoices/process-a-document/
+ * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
+ * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
+ * @param categories List of categories to use when categorizing the document
+ * @param deleteAfterProcessing Delete this document from Veryfi after data has been extracted
+ * @param maxPagesToProcess When sending a long document to Veryfi for processing, this parameter controls how many pages of the document will be read and processed, starting from page 1.
+ * @param boostMode Flag that tells Veryfi whether boost mode should be enabled. When set to 1, Veryfi will skip data enrichment steps, but will process the document faster. Default value for this flag is 0
+ * @param externalId Optional custom document identifier. Use this if you would like to assign your own ID to documents
+ * @param thinking Enables Veryfi Thinking Mode (agentic data extraction). Accepted values are "light" and "deep"; pass null to use the standard real-time pipeline. Must be enabled on your account.
+ * @param parameters Additional request parameters
+ * @return the data extracted from the Document [String]
+ */
+fun Client.processDocumentUrl(
+    fileUrl: String, fileUrls: List<String?>?, categories: List<String?>?,
+    deleteAfterProcessing: Boolean, maxPagesToProcess: Int,
+    boostMode: Boolean, externalId: String?, thinking: String?, parameters: JSONObject?
+): String {
     val endpointName = "/documents/"
     val requestArguments = getProcessDocumentUrlArguments(
         fileUrl,
@@ -78,6 +107,7 @@ fun Client.processDocumentUrl(
         maxPagesToProcess,
         boostMode,
         externalId,
+        thinking,
         parameters
     )
     return request(HttpMethod.POST, endpointName, requestArguments)
@@ -101,6 +131,31 @@ fun Client.processDocumentUrlAsync(
     maxPagesToProcess: Int, boostMode: Boolean,
     externalId: String?, parameters: JSONObject?
 ): CompletableFuture<String> {
+    return processDocumentUrlAsync(
+        fileUrl, fileUrls, categories, deleteAfterProcessing,
+        maxPagesToProcess, boostMode, externalId, null, parameters
+    )
+}
+
+/**
+ * Process document from url and extract all the fields from it. https://docs.veryfi.com/api/receipts-invoices/process-a-document/
+ * @param fileUrl Required if file_urls isn't specified. Publicly accessible URL to a file, e.g. "https://cdn.example.com/receipt.jpg".
+ * @param fileUrls Required if file_url isn't specifies. List of publicly accessible URLs to multiple files, e.g. ["https://cdn.example.com/receipt1.jpg", "https://cdn.example.com/receipt2.jpg"]
+ * @param categories List of categories to use when categorizing the document
+ * @param deleteAfterProcessing Delete this document from Veryfi after data has been extracted
+ * @param maxPagesToProcess When sending a long document to Veryfi for processing, this parameter controls how many pages of the document will be read and processed, starting from page 1.
+ * @param boostMode Flag that tells Veryfi whether boost mode should be enabled. When set to 1, Veryfi will skip data enrichment steps, but will process the document faster. Default value for this flag is 0
+ * @param externalId Optional custom document identifier. Use this if you would like to assign your own ID to documents
+ * @param thinking Enables Veryfi Thinking Mode (agentic data extraction). Accepted values are "light" and "deep"; pass null to use the standard real-time pipeline. Must be enabled on your account.
+ * @param parameters Additional request parameters
+ * @return the data extracted from the Document
+ */
+fun Client.processDocumentUrlAsync(
+    fileUrl: String, fileUrls: List<String?>?,
+    categories: List<String?>?, deleteAfterProcessing: Boolean,
+    maxPagesToProcess: Int, boostMode: Boolean,
+    externalId: String?, thinking: String?, parameters: JSONObject?
+): CompletableFuture<String> {
     val endpointName = "/documents/"
     val requestArguments = getProcessDocumentUrlArguments(
         fileUrl,
@@ -110,6 +165,7 @@ fun Client.processDocumentUrlAsync(
         maxPagesToProcess,
         boostMode,
         externalId,
+        thinking,
         parameters
     )
     return requestAsync(HttpMethod.POST, endpointName, requestArguments)

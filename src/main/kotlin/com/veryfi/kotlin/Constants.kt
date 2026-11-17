@@ -105,6 +105,14 @@ object Constants {
     const val MAX_PAGES_TO_PROCESS = "max_pages_to_process"
 
     /**
+     * param for HttpRequest.
+     * Enables Veryfi Thinking Mode (agentic data extraction) on the documents
+     * endpoint. Accepted values are "light" and "deep"; omit for the standard
+     * real-time pipeline. See https://docs.veryfi.com/api/receipts-invoices/process-a-document/
+     */
+    const val THINKING = "thinking"
+
+    /**
      * param for HttpRequest
      */
     const val TEMPLATE_NAME = "template_name"

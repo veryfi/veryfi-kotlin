@@ -24,7 +24,11 @@ import java.nio.ByteBuffer
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.Flow
 
-/** Checks that the `thinking` request parameter reaches the API body. */
+/**
+ * Checks that the Veryfi Thinking Mode `thinking` request parameter reaches the
+ * API body, both when passed via the dedicated argument and via the extra
+ * parameters. Docs: https://docs.veryfi.com/api/receipts-invoices/process-a-document/
+ */
 @Suppress("UNCHECKED_CAST")
 class ProcessDocumentThinkingTest {
     private val documentUrl = "https://cdn.example.com/receipt.jpg"
@@ -43,6 +47,8 @@ class ProcessDocumentThinkingTest {
         client = createClient("your_client_id", "your_username", "your_apikey") as Client
         client.setHttpClient(httpClient)
     }
+
+    // --- thinking passed through the extra parameters ---
 
     @Test
     fun processDocumentSendsThinking() {
@@ -76,19 +82,57 @@ class ProcessDocumentThinkingTest {
 
     @Test
     fun processDocumentAsyncSendsThinking() {
+        mockSendAsync()
+        client.processDocumentAsync(receiptPath, listOf(), false, JSONObject().put("thinking", "deep"))
+        Assertions.assertEquals("deep", sentAsyncBody().getString("thinking"))
+    }
+
+    // --- thinking passed via the dedicated argument (overloads) ---
+
+    @Test
+    fun processDocumentSendsThinkingViaDedicatedArgument() {
+        for (mode in modes) {
+            clearInvocations(httpClient)
+            client.processDocument(receiptPath, listOf(), false, mode, null)
+            Assertions.assertEquals(mode, sentBody().getString("thinking"))
+        }
+    }
+
+    @Test
+    fun processDocumentUrlSendsThinkingViaDedicatedArgument() {
+        for (mode in modes) {
+            clearInvocations(httpClient)
+            client.processDocumentUrl(documentUrl, null, null, false, 1, false, null, mode, null)
+            Assertions.assertEquals(mode, sentBody().getString("thinking"))
+        }
+    }
+
+    @Test
+    fun processDocumentAsyncSendsThinkingViaDedicatedArgument() {
+        mockSendAsync()
+        client.processDocumentAsync(receiptPath, listOf(), false, "deep", null)
+        Assertions.assertEquals("deep", sentAsyncBody().getString("thinking"))
+    }
+
+    private fun mockSendAsync() {
         val httpResponse: HttpResponse<String> = mock(HttpResponse::class.java) as HttpResponse<String>
         `when`(httpClient.sendAsync(any(HttpRequest::class.java), any<BodyHandler<String>>()))
             .thenReturn(CompletableFuture.completedFuture(httpResponse))
-        client.processDocumentAsync(receiptPath, listOf(), false, JSONObject().put("thinking", "deep"))
-        val request = ArgumentCaptor.forClass(HttpRequest::class.java)
-        verify(httpClient).sendAsync(request.capture(), any<BodyHandler<String>>())
-        Assertions.assertEquals("deep", bodyOf(request.value).getString("thinking"))
+        `when`(httpResponse.statusCode()).thenReturn(200)
+        `when`(httpResponse.body()).thenReturn("{}")
     }
 
-    /** The JSON body of the single request sent through the mocked client. */
+    /** The JSON body of the single synchronous request sent through the mocked client. */
     private fun sentBody(): JSONObject {
         val request = ArgumentCaptor.forClass(HttpRequest::class.java)
         verify(httpClient).send(request.capture(), any<BodyHandler<String>>())
+        return bodyOf(request.value)
+    }
+
+    /** The JSON body of the single asynchronous request sent through the mocked client. */
+    private fun sentAsyncBody(): JSONObject {
+        val request = ArgumentCaptor.forClass(HttpRequest::class.java)
+        verify(httpClient).sendAsync(request.capture(), any<BodyHandler<String>>())
         return bodyOf(request.value)
     }
 

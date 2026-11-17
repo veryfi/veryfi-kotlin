@@ -18,7 +18,7 @@ import java.util.concurrent.CompletableFuture
  * @param filePath Path on disk to a file to submit for data extraction
  * @param categories List of categories Veryfi can use to categorize the document
  * @param deleteAfterProcessing Delete this document from Veryfi after data has been extracted
- * @param parameters Additional request parameters
+ * @param parameters Additional request parameters. Set `thinking` to `"light"` or `"deep"` (slower) for an extra LLM pass on the line items; omit it to turn it off. Needs thinking mode enabled for your account.
  * @return the JSON object of the parameters of the request
  */
 private fun Client.getProcessDocumentArguments(
@@ -57,7 +57,7 @@ private fun Client.getProcessDocumentArguments(
  * @param filePath Path on disk to a file to submit for data extraction
  * @param categories List of categories Veryfi can use to categorize the document
  * @param deleteAfterProcessing Delete this document from Veryfi after data has been extracted
- * @param parameters Additional request parameters
+ * @param parameters Additional request parameters. Set `thinking` to `"light"` or `"deep"` (slower) for an extra LLM pass on the line items; omit it to turn it off. Needs thinking mode enabled for your account.
  * @return the data extracted from the Document [String]
  */
 fun Client.processDocument(
@@ -74,7 +74,7 @@ fun Client.processDocument(
  * @param filePath Path on disk to a file to submit for data extraction
  * @param categories List of categories Veryfi can use to categorize the document
  * @param deleteAfterProcessing Delete this document from Veryfi after data has been extracted
- * @param parameters Additional request parameters
+ * @param parameters Additional request parameters. Set `thinking` to `"light"` or `"deep"` (slower) for an extra LLM pass on the line items; omit it to turn it off. Needs thinking mode enabled for your account.
  * @return the data extracted from the Document
  */
 fun Client.processDocumentAsync(

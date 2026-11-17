@@ -53,6 +53,25 @@ object Main {
 }
 ``` 
 
+### Thinking Mode
+
+[Thinking Mode](https://docs.veryfi.com/api/receipts-invoices/process-a-document/) is Veryfi's agentic data extraction: AI agents review and correct receipt and invoice extraction before the response is returned. Pass `"light"` or `"deep"` as the `thinking` argument, and leave it `null` to use the standard real-time pipeline. It currently supports receipts and invoices and must be enabled on your account.
+
+```java
+object Main {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val clientId = "your_client_id"
+        val clientSecret = "your_client_secret"
+        val username = "your_username"
+        val apiKey = "your_password"
+        val client = createClient(clientId, clientSecret, username, apiKey)
+        val categories = listOf("Advertising & Marketing", "Automotive")
+        val jsonResponse = client.processDocument("example1.jpg", categories, false, "light", null)
+    }
+}
+```
+
 Update a document
 ```java
 object Main {
